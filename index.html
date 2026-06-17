@@ -412,7 +412,7 @@
     <input type="date" id="endDate" value="2026-06-17">
   </div>
   <button class="btn btn-primary" id="fetchBtn" onclick="runAnalysis()">Fetch &amp; Analyze</button>
-  <button class="btn btn-secondary" onclick="loadKnownPosts()" style="white-space:nowrap;">Load 34 Verified Posts</button>
+  <button class="btn btn-secondary" onclick="loadKnownPosts()" style="white-space:nowrap;">Load 41 Verified Posts</button>
   <button class="btn btn-secondary" onclick="exportSnapshot()" style="white-space:nowrap;" title="Download the current data as iran-posts-snapshot.json — commit it next to this page to make it the default photograph.">⤓ Export Snapshot</button>
   <div class="view-toggle">
     <button class="view-btn active" onclick="setView('timeline')" id="vbtn-timeline">Timeline</button>
@@ -431,7 +431,7 @@
   <div id="empty-state" class="empty-state">
     <div class="empty-icon">🗞️</div>
     <h2>No Data Loaded</h2>
-    <p><strong>Fetch &amp; Analyze</strong> pulls every Iran-related post in the date range straight from the trumpstruth.org archive and analyzes it with no API key needed — that's how you get the full volume. Then click <strong>Export Snapshot</strong> to freeze it as <code>iran-posts-snapshot.json</code>; commit that file next to this page and it loads automatically as the default photograph. <strong>Load 34 Verified Posts</strong> gives the curated offline corpus in the meantime.</p>
+    <p><strong>Fetch &amp; Analyze</strong> pulls every Iran-related post in the date range straight from the trumpstruth.org archive and analyzes it with no API key needed — that's how you get the full volume. Then click <strong>Export Snapshot</strong> to freeze it as <code>iran-posts-snapshot.json</code>; commit that file next to this page and it loads automatically as the default photograph. <strong>Load 41 Verified Posts</strong> gives the curated offline corpus in the meantime.</p>
     <div class="rss-info">
       Data source: <a href="https://www.trumpstruth.org/about" target="_blank">trumpstruth.org</a> — public archive of all Trump Truth Social posts. An Anthropic API key (optional) upgrades the keyless heuristic pass to a deeper Claude analysis on refresh.
     </div>
@@ -530,7 +530,7 @@ async function fetchWithProxy(url) {
       }
     } catch(e) { /* try next proxy */ }
   }
-  throw new Error('All CORS proxies failed \u2014 use "Load 34 Verified Posts" instead.');
+  throw new Error('All CORS proxies failed \u2014 use "Load 41 Verified Posts" instead.');
 }
 
 function setView(v) {
@@ -711,7 +711,8 @@ const SENTIMENT = {
   1:-0.6, 2:-0.55, 3:-0.45, 4:-0.85, 5:0.2, 6:-0.7, 7:-0.6, 8:-0.3, 9:-0.7, 10:-0.6,
   11:-0.55, 12:-0.5, 13:-0.5, 14:-0.65, 15:-0.6, 16:-0.6, 17:-0.55, 18:-0.35, 19:0.1, 20:-0.5,
   21:-0.9, 22:-0.7, 23:0.5, 24:-0.85, 25:-0.95, 26:0.55, 27:-0.7, 28:-0.6, 29:-0.5, 30:-0.65,
-  31:0.65, 32:-0.5, 33:0.85, 34:0.4
+  31:0.65, 32:-0.5, 33:0.85, 34:0.4,
+  35:-0.8, 36:-0.2, 37:0.5, 38:-0.2, 39:0.3, 40:-0.85, 41:0.7
 };
 function getSentiment(p){
   if(typeof p.sentiment === 'number') return Math.max(-1, Math.min(1, p.sentiment));
@@ -1243,7 +1244,7 @@ async function runAnalysis() {
         <br><br>
         The browser's public CORS proxies are likely rate-limited or down. Options:<br>
         1. Wait a minute and try <strong>Fetch &amp; Analyze</strong> again<br>
-        2. Click <strong>"Load 34 Verified Posts"</strong> for the curated offline corpus<br>
+        2. Click <strong>"Load 41 Verified Posts"</strong> for the curated offline corpus<br>
         3. Open the raw feed directly: <a href="https://www.trumpstruth.org/feed?start_date=${document.getElementById('startDate').value}&end_date=${document.getElementById('endDate').value}" target="_blank">trumpstruth.org/feed</a>
       </div>`;
     document.getElementById('error-state').style.display = 'block';
@@ -1504,9 +1505,9 @@ async function loadKnownPosts() {
     {
       index:31, date:'2026-06-11',
       source:'RSS',
-      text:'I have just cancelled the planned Strikes against Iran. Great progress is being made, and I didn\'t want to interfere with a Deal that is very close to getting done. Iran wants to make a deal, and so do we!',
+      text:'Based on the fact that discussions with the Islamic Republic of Iran have been brought to the highest level of Iranian leadership and approved, I have, as President of the United States of America, cancelled the scheduled strikes and bombings against Iran this evening.',
       category:'deescalation',
-      analysis:'Cancels planned strikes citing "great progress," one day after declaring Iran a collapsing "FAILED NATION" with no money to pay its military. "Iran wants to make a deal, and so do we" reverses months of deal-rejection framing.',
+      analysis:'Cancels the scheduled strikes citing approval at the "highest level of Iranian leadership" — the same evening he had threatened to hit Iran "VERY HARD TONIGHT," and one day after calling Iran a collapsing "FAILED NATION."',
       contradicts:[30], contradictionReason:'Post 30 (Jun 10) called Iran a "FAILED NATION" being crushed by a "STEEL WALL" blockade and warned they would "pay the price" — post 31 (Jun 11) cancels strikes citing "great progress" toward a deal both sides want.'
     },
     {
@@ -1532,6 +1533,62 @@ async function loadKnownPosts() {
       category:'claim',
       analysis:'Declares the war "ended" and the deal done — then immediately adds the blockade stays up because the "Transaction" is not actually finalized. A completed deal and an active blockade pending finalization cannot both be true.',
       contradicts:[33], contradictionReason:'Post 33 (same day) said the deal "is now complete" and to "let the oil flow" — post 34 keeps the blockade in place because the transaction is "not yet finalized," contradicting the claim that it is complete.'
+    },
+    {
+      index:35, date:'2026-04-02',
+      source:'RSS',
+      text:'We will consider when the Hormuz Strait is open, free, and clear. Until then, we are blasting Iran into oblivion or, as they say, back to the Stone Ages.',
+      category:'threat',
+      analysis:'Conditions any talks on Iran first reopening Hormuz, while vowing to "blast Iran into oblivion" in the meantime — threat and negotiation in the same breath, days after the Mar 23 "productive conversations."',
+      contradicts:[23], contradictionReason:'Post 23 (Mar 23) announced "very good and productive conversations" and postponed all strikes — post 35 returns to "blasting Iran into oblivion ... back to the Stone Ages."'
+    },
+    {
+      index:36, date:'2026-04-05',
+      source:'RSS',
+      text:'Over the past several hours, the United States Military pulled off one of the most daring Search and Rescue Operations in U.S. History. Our GREAT Airman, a Colonel, was behind enemy lines in the treacherous mountains of Iran.',
+      category:'claim',
+      analysis:'Announces the rescue of a downed F-15E crew member from inside Iran — the trigger for the weekend of "Power Plant Day" and "living in Hell" ultimatums that followed.',
+      contradicts:[], contradictionReason:''
+    },
+    {
+      index:37, date:'2026-05-23',
+      source:'RSS',
+      text:'An Agreement has been largely negotiated. Final aspects and details of the Deal are currently being discussed, and will be announced shortly.',
+      category:'deescalation',
+      analysis:'Declares a deal "largely negotiated" and imminent — the first of several "almost done" announcements that would keep slipping for weeks.',
+      contradicts:[29], contradictionReason:'Post 29 (May 6) threatened bombing "at a much higher level" if Iran did not agree — post 37 says an agreement has been "largely negotiated" and will be "announced shortly."'
+    },
+    {
+      index:38, date:'2026-05-29',
+      source:'RSS',
+      text:'Iran MUST agree to never have a Nuclear Weapon, and the Strait of Hormuz must be IMMEDIATELY OPEN to unrestricted shipping traffic. I will be making my FINAL DETERMINATION today.',
+      category:'claim',
+      analysis:'Six days after the deal was "largely negotiated" and would be "announced shortly," he is still listing must-haves and promising a "final determination" — which the meeting then ended without.',
+      contradicts:[37], contradictionReason:'Post 37 (May 23) said the agreement was "largely negotiated" and would be "announced shortly" — post 38 (May 29) is still issuing demands and deferring to a "final determination."'
+    },
+    {
+      index:39, date:'2026-05-29',
+      source:'RSS',
+      text:'The “Nuclear Dust” will be unearthed by the United States (which, it is agreed, is the only Country, along with China, with the mechanical capability of doing so!), in close coordination and conjunction with the Islamic Republic of Iran, plus the International Atomic Energy Agency, and DESTROYED.',
+      category:'deescalation',
+      analysis:'Describes digging up Iran\'s buried highly-enriched uranium — his "Nuclear Dust" — and destroying it in cooperation with Iran and the IAEA, framing the same regime as a working partner.',
+      contradicts:[], contradictionReason:''
+    },
+    {
+      index:40, date:'2026-06-11',
+      source:'RSS',
+      text:'The United States will be hitting Iran VERY HARD TONIGHT, including their Oil Infrastructure and Kharg Island, unless we hear otherwise. They know what they have to do!',
+      category:'threat',
+      analysis:'Threatens to hit Iran "VERY HARD TONIGHT" and seize its oil infrastructure — hours before announcing he had cancelled those very strikes the same evening.',
+      contradicts:[], contradictionReason:''
+    },
+    {
+      index:41, date:'2026-06-11',
+      source:'RSS',
+      text:'We just made a great settlement of the war, subject to the finalization of documents. It could be soon, very soon, maybe over the weekend in Europe.',
+      category:'deescalation',
+      analysis:'Declares a "great settlement of the war" the same evening as the "VERY HARD TONIGHT" threat — and "subject to finalization," the same qualifier still attached to the "complete" deal four days later.',
+      contradicts:[20], contradictionReason:'Post 20 (Mar 21) said "I don\'t want a deal" — post 41 (Jun 11) announces "a great settlement of the war."'
     },
   ];
 
@@ -1623,22 +1680,32 @@ Categories: contradiction | escalation | deescalation | threat | claim | neutral
           label: 'Complete Deal vs. No Good Faith',
           description: 'Jun 12: Iran are "dishonorable" people and "there is no such thing as dealing in good faith." Jun 15: "The Deal ... is now complete," "we ended the war with Iran today" — yet the blockade stays up until the "Transaction is finalized."',
           postIndexes: [32,33,34]
+        },
+        {
+          label: 'The June 11 Whiplash',
+          description: '"VERY HARD TONIGHT" — strikes on Iran\'s oil infrastructure and Kharg Island — then, the same evening, the strikes are "cancelled" and a "great settlement of the war" is announced.',
+          postIndexes: [40,31,41]
+        },
+        {
+          label: 'Deal "Almost Done" on Repeat',
+          description: 'May 23: agreement "largely negotiated ... announced shortly." May 29: still listing demands, no "final determination." Jun 11: "great settlement, subject to finalization." Jun 15: "complete" — yet the blockade stays up.',
+          postIndexes: [37,38,41,33,34]
         }
       ],
       stats: {
         totalAnalyzed: knownPosts.length,
-        contradictions: 25,
+        contradictions: 29,
         escalations: 6,
-        deescalations: 6,
-        threats: 8,
-        claims: 12
+        deescalations: 9,
+        threats: 10,
+        claims: 14
       }
     };
     document.getElementById('results').style.display = 'block';
     renderAll(mockAnalysis);
     setView(currentView);
     showProgress(100);
-    setStatus('Analysis complete — 34 verified posts loaded', `${mockAnalysis.stats?.contradictions||0} contradicting posts`, 'live');
+    setStatus('Analysis complete — 41 verified posts loaded', `${mockAnalysis.stats?.contradictions||0} contradicting posts`, 'live');
   }
 }
 
