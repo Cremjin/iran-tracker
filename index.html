@@ -414,6 +414,7 @@
   <button class="btn btn-primary" id="fetchBtn" onclick="runAnalysis()">Fetch &amp; Analyze</button>
   <button class="btn btn-secondary" onclick="loadKnownPosts()" style="white-space:nowrap;">Load 41 Verified Posts</button>
   <button class="btn btn-secondary" onclick="exportSnapshot()" style="white-space:nowrap;" title="Download the current data as iran-posts-snapshot.json — commit it next to this page to make it the default photograph.">⤓ Export Snapshot</button>
+  <label class="btn btn-secondary" style="white-space:nowrap;cursor:pointer;" title="Import a CSV / JSON / JSONL export (Factbase, Roll Call, truthbrush) or a saved snapshot — analyzed locally, no key or network needed.">⤒ Import File<input type="file" accept=".csv,.json,.jsonl,.txt,.xml" onchange="importFile(this)" style="display:none;"></label>
   <div class="view-toggle">
     <button class="view-btn active" onclick="setView('timeline')" id="vbtn-timeline">Timeline</button>
     <button class="view-btn" onclick="setView('graph')" id="vbtn-graph">Logic Graph</button>
@@ -433,7 +434,7 @@
     <h2>No Data Loaded</h2>
     <p><strong>Fetch &amp; Analyze</strong> pulls every Iran-related post in the date range straight from the trumpstruth.org archive and analyzes it with no API key needed — that's how you get the full volume. Then click <strong>Export Snapshot</strong> to freeze it as <code>iran-posts-snapshot.json</code>; commit that file next to this page and it loads automatically as the default photograph. <strong>Load 41 Verified Posts</strong> gives the curated offline corpus in the meantime.</p>
     <div class="rss-info">
-      Data source: <a href="https://www.trumpstruth.org/about" target="_blank">trumpstruth.org</a> — public archive of all Trump Truth Social posts. An Anthropic API key (optional) upgrades the keyless heuristic pass to a deeper Claude analysis on refresh.
+      Data source: <a href="https://www.trumpstruth.org/about" target="_blank">trumpstruth.org</a> — public archive of all Trump Truth Social posts. Or <strong>Import File</strong> a CSV/JSON export from Factbase, Roll Call, or truthbrush to load the full archive with no network or key needed. An Anthropic API key (optional) upgrades the analysis to a deeper Claude pass.
     </div>
   </div>
 
@@ -689,16 +690,22 @@ Return this structure:
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'x-api-key': userApiKey, 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' },
     body: JSON.stringify({
-      model: 'claude-sonnet-4-20250514',
+      model: 'claude-sonnet-4-6',
       max_tokens: 8000,
       system: systemPrompt,
       messages: [{ role: 'user', content: `Analyze these ${posts.length} Iran-related Trump posts:\n\n${postsText}` }]
     })
   });
 
-  if(!resp.ok) throw new Error(`Claude API error: ${resp.status}`);
+  if(!resp.ok){
+    const body = await resp.text().catch(()=> '');
+    let msg = body; try { msg = JSON.parse(body).error?.message || body; } catch(e){}
+    throw new Error(`Claude API ${resp.status}: ${(msg||resp.statusText||'').slice(0,220)}`);
+  }
   const data = await resp.json();
-  const raw = data.content.map(b => b.text||'').join('').trim();
+  if(data.type === 'error') throw new Error(`Claude API: ${data.error?.message || 'unknown error'}`);
+  const raw = (data.content||[]).map(b => b.text||'').join('').trim();
+  if(!raw) throw new Error('Claude returned an empty response');
   const clean = raw.replace(/^```json\s*/,'').replace(/\s*```$/,'').trim();
   return JSON.parse(clean);
 }
@@ -1169,6 +1176,100 @@ async function tryLoadSnapshot(){
   return false;
 }
 
+// ── IMPORT (load a CSV / JSON / JSONL / RSS-XML export from any source) ──
+const IRAN_KW = ['iran','iranian','tehran','khamenei','nuclear','hormuz','strait','persian','ayatollah','islamic republic','regime','missile','atomic','bomb','mullah','revolutionary guard','irgc','sanction','uranium','centrifuge','hezbollah','proxies','blockade','epic fury','midnight hammer','kharg','ayatollah'];
+function importFile(input){
+  const file = input.files && input.files[0]; if(!file) return;
+  const reader = new FileReader();
+  reader.onerror = ()=> setStatus('Could not read file', '', 'error');
+  reader.onload = ()=>{
+    try {
+      const txt = String(reader.result);
+      // If it's one of our own snapshots (full analysis), load it as-is to preserve any AI pass.
+      if(/\.json$/i.test(file.name)){
+        try { const j = JSON.parse(txt); const a = j.analysis || (j.posts ? j : null);
+          if(a && a.posts && a.posts.length){
+            document.getElementById('empty-state').style.display='none';
+            document.getElementById('error-state').style.display='none';
+            document.getElementById('results').style.display='block';
+            renderAll(a); setView(currentView); cacheSnapshot(a);
+            setStatus(`Loaded ${a.posts.length} posts from ${file.name}`, '', 'live');
+            input.value=''; return;
+          }
+        } catch(e){}
+      }
+      let raw = parseImported(file.name, txt);
+      if(!raw.length) throw new Error('No posts found — expected date + text columns (CSV) or fields (JSON/JSONL).');
+      const iran = raw.filter(p=>{ const t=(p.text||'').toLowerCase(); return IRAN_KW.some(k=>t.includes(k)); });
+      const use = iran.length ? iran : raw;
+      const analysis = analyzeHeuristic(use);
+      document.getElementById('empty-state').style.display='none';
+      document.getElementById('error-state').style.display='none';
+      document.getElementById('results').style.display='block';
+      renderAll(analysis); setView(currentView); cacheSnapshot(analysis);
+      setStatus(`Imported ${use.length} posts from ${file.name}${iran.length?' — filtered to Iran-related':''}`, `${analysis.stats.contradictions} contradicting posts`, 'live');
+    } catch(err){
+      setStatus('Import failed', '', 'error');
+      document.getElementById('error-state').innerHTML = `<div class="error-box"><strong>Import failed.</strong> ${esc(err.message)}<br><br>Accepted formats: a saved <code>iran-posts-snapshot.json</code>; a JSON or JSONL array of posts (each with a date and text field — e.g. a truthbrush export); a CSV with date and text columns (e.g. a Factbase / Roll Call export); or the trumpstruth.org RSS XML.</div>`;
+      document.getElementById('error-state').style.display='block';
+    }
+    input.value=''; // allow re-importing the same file
+  };
+  reader.readAsText(file);
+}
+function _normPost(o){
+  if(!o || typeof o!=='object') return null;
+  const text = (o.text ?? o.content ?? o.body ?? o.status ?? o.Post ?? o.post ?? o.tweet ?? o.Text ?? '').toString();
+  const clean = /<[a-z!/][\s\S]*>/i.test(text) ? stripHTML(text) : text;
+  const date = o.date ?? o.created_at ?? o.createdAt ?? o.Date ?? o.timestamp ?? o.time ?? o.pubDate ?? o.datetime ?? '';
+  if(!clean.trim()) return null;
+  return { text: clean.trim(), date: date || new Date().toISOString(), link: o.link||o.url||o.uri||'' };
+}
+function parseImported(name, text){
+  const lower = name.toLowerCase(), t = text.trim();
+  // JSONL (one JSON object per line, e.g. truthbrush) — check before plain JSON
+  if(lower.endsWith('.jsonl') || (/^\s*\{/.test(t) && /\}\s*\n\s*\{/.test(t))){
+    return t.split(/\r?\n/).filter(l=>l.trim()).map(l=>{ try{ return _normPost(JSON.parse(l)); }catch(e){ return null; } }).filter(Boolean);
+  }
+  if(lower.endsWith('.json') || ((t.startsWith('[') || t.startsWith('{')) && !lower.endsWith('.csv'))){
+    const j = JSON.parse(t);
+    const arr = Array.isArray(j) ? j : (j.analysis?.posts || j.posts || j.data || []);
+    return arr.map(_normPost).filter(Boolean);
+  }
+  if(lower.endsWith('.xml') || t.startsWith('<')){
+    return parseRSS(t).map(p=>({ text:p.content, date:p.date, link:p.link })).filter(p=>p.text);
+  }
+  return parseCSV(t).map(_normPost).filter(Boolean);
+}
+// minimal RFC-4180-style CSV parser (handles quoted fields, commas, and newlines in quotes)
+function parseCSV(text){
+  const rows=[]; let row=[], field='', i=0, q=false;
+  while(i<text.length){
+    const c=text[i];
+    if(q){
+      if(c==='"'){ if(text[i+1]==='"'){ field+='"'; i++; } else q=false; }
+      else field+=c;
+    } else {
+      if(c==='"') q=true;
+      else if(c===','){ row.push(field); field=''; }
+      else if(c==='\n'){ row.push(field); rows.push(row); row=[]; field=''; }
+      else if(c!=='\r') field+=c;
+    }
+    i++;
+  }
+  if(field.length || row.length){ row.push(field); rows.push(row); }
+  if(rows.length < 2) return [];
+  const header = rows[0].map(h=>h.trim().toLowerCase());
+  const di = header.findIndex(h=>['date','created_at','createdat','timestamp','time','pubdate','datetime'].includes(h));
+  const ti = header.findIndex(h=>['text','content','body','status','post','tweet','message'].includes(h));
+  return rows.slice(1).filter(r=>r.length>1).map(r=>{
+    const o={}; header.forEach((h,k)=> o[h]=r[k]);
+    o.date = di>=0 ? r[di] : (o.date||'');
+    o.text = ti>=0 ? r[ti] : r.join(' ');
+    return o;
+  });
+}
+
 async function runAnalysis() {
   const startDate = document.getElementById('startDate').value;
   const endDate = document.getElementById('endDate').value;
@@ -1218,7 +1319,7 @@ async function runAnalysis() {
       setStatus(`Analyzing ${iranPosts.length} Iran posts with Claude AI...`, 'Phase 3/3', 'live');
       showProgress(65);
       try { analysis = await analyzeWithClaude(iranPosts); }
-      catch(e){ analysis = analyzeHeuristic(iranPosts); analysis.summary = '[AI pass failed — keyless heuristic used] ' + analysis.summary; }
+      catch(e){ analysis = analyzeHeuristic(iranPosts); analysis.summary = `[Live AI pass failed: ${e.message}. Showing the keyless heuristic analysis instead.] ` + analysis.summary; }
     } else {
       setStatus(`Analyzing ${iranPosts.length} Iran posts (keyless heuristic engine)...`, 'Phase 3/3', 'live');
       showProgress(65);
@@ -1615,15 +1716,21 @@ Categories: contradiction | escalation | deescalation | threat | claim | neutral
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'x-api-key': userApiKey, 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' },
       body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
+        model: 'claude-sonnet-4-6',
         max_tokens: 8000,
         system: systemPrompt,
         messages: [{ role: 'user', content: `Analyze these ${knownPosts.length} documented Trump Iran posts and return enhanced analysis:\n\n${postsText}` }]
       })
     });
 
+    if(!resp.ok){
+      const body = await resp.text().catch(()=> '');
+      let msg = body; try { msg = JSON.parse(body).error?.message || body; } catch(e){}
+      throw new Error(`Claude API ${resp.status}: ${(msg||resp.statusText||'').slice(0,220)}`);
+    }
     const data = await resp.json();
-    const raw = data.content.map(b=>b.text||'').join('').trim();
+    if(data.type === 'error') throw new Error(`Claude API: ${data.error?.message || 'unknown error'}`);
+    const raw = (data.content||[]).map(b=>b.text||'').join('').trim();
     const clean = raw.replace(/^```json\s*/,'').replace(/\s*```$/,'').trim();
     const analysis = JSON.parse(clean);
 
@@ -1705,7 +1812,12 @@ Categories: contradiction | escalation | deescalation | threat | claim | neutral
     renderAll(mockAnalysis);
     setView(currentView);
     showProgress(100);
-    setStatus('Analysis complete — 41 verified posts loaded', `${mockAnalysis.stats?.contradictions||0} contradicting posts`, 'live');
+    const aiFailed = userApiKey && !/NO_API_KEY/.test(e.message);
+    setStatus(
+      aiFailed ? `41 verified posts loaded — live AI pass failed (${e.message})` : 'Analysis complete — 41 verified posts loaded',
+      `${mockAnalysis.stats?.contradictions||0} contradicting posts`,
+      aiFailed ? 'error' : 'live'
+    );
   }
 }
 
