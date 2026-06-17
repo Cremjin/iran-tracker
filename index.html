@@ -565,6 +565,47 @@ async function fetchRSS(startDate, endDate) {
   return parseRSS(xml);
 }
 
+// The trumpstruth.org RSS feed returns newest-first and caps the number of items
+// per request, so a wide range (e.g. Jan–Jun) only reaches back a few days before
+// hitting the cap. This calibrates that cap from the first response, then recursively
+// splits the date range into smaller windows until nothing is truncated, and merges +
+// dedupes everything so the full range is actually captured.
+const _dayMs = 86400000;
+const _sleep = ms => new Promise(r=>setTimeout(r,ms));
+function _ymd(ms){ return new Date(ms).toISOString().slice(0,10); }
+async function fetchAllRSS(startDate, endDate, onProgress){
+  let cap = Infinity, reqs = 0;
+  const seen = new Map();
+  const add = arr => arr.forEach(p=>{
+    const k = p.link || (((p.date && !isNaN(p.date)) ? p.date.toISOString() : p.pubDate) + '|' + (p.content||'').slice(0,60));
+    if(!seen.has(k)) seen.set(k, p);
+  });
+  async function gather(s, e, depth){
+    let arr;
+    try { arr = await fetchRSS(s, e); }
+    catch(err){ return; } // skip a failed window rather than abort the whole pull
+    reqs++;
+    if(onProgress) onProgress(reqs, seen.size, s, e);
+    if(cap === Infinity){
+      // calibrate: if the oldest returned item is well after the window start, it was truncated
+      const oldest = arr.length ? arr[0].date.getTime() : null;
+      if(oldest !== null && oldest > new Date(s+'T00:00:00Z').getTime() + _dayMs){
+        cap = arr.length; // effective per-request item cap
+      } else { add(arr); return; } // whole window fit in one request
+    }
+    const days = (new Date(e) - new Date(s)) / _dayMs;
+    if(arr.length >= cap && days > 1 && depth < 14){
+      const midMs = new Date(s).getTime() + Math.floor((new Date(e) - new Date(s)) / 2);
+      await _sleep(160); await gather(s, _ymd(midMs), depth+1);
+      await _sleep(160); await gather(_ymd(midMs + _dayMs), e, depth+1);
+    } else {
+      add(arr);
+    }
+  }
+  await gather(startDate, endDate, 0);
+  return [...seen.values()].sort((a,b)=> a.date - b.date);
+}
+
 function parseRSS(xmlText) {
   const parser = new DOMParser();
   const doc = parser.parseFromString(xmlText, 'application/xml');
@@ -1143,9 +1184,17 @@ async function runAnalysis() {
     showProgress(10);
     let posts;
     try {
-      posts = await fetchRSS(startDate, endDate);
+      // Auto-chunk the range so the feed's per-request item cap doesn't truncate it
+      posts = await fetchAllRSS(startDate, endDate, (reqs, found, ws, we)=>{
+        setStatus(`Pulling archive in windows… ${reqs} requests, ${found} posts so far`, `current: ${ws} → ${we}`, 'live');
+        setCount(`${found} posts collected`);
+        showProgress(Math.min(34, 10 + reqs)); // creep toward 34% during paging
+      });
     } catch(e) {
-      throw new Error(`Could not fetch from trumpstruth.org RSS. This is likely a CORS restriction in the browser.\n\nThe RSS feed URL is: https://www.trumpstruth.org/rss?start_date=${startDate}&end_date=${endDate}\n\nSee the fallback note below for how to use this data.`);
+      throw new Error(`Could not fetch from trumpstruth.org RSS. This is likely the browser's CORS proxies being rate-limited or down. The raw feed URL is: ${RSS_BASE}?start_date=${startDate}&end_date=${endDate}`);
+    }
+    if(!posts.length){
+      throw new Error(`No posts returned for ${startDate} to ${endDate}. The CORS proxies may be down — try again shortly.`);
     }
 
     setCount(posts.length + ' raw posts');
