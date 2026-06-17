@@ -404,14 +404,14 @@
 <div class="controls">
   <div class="date-group">
     <label>From</label>
-    <input type="date" id="startDate" value="2026-02-14">
+    <input type="date" id="startDate" value="2026-01-01">
   </div>
   <div class="date-group">
     <label>To</label>
-    <input type="date" id="endDate" value="2026-03-23">
+    <input type="date" id="endDate" value="2026-06-17">
   </div>
   <button class="btn btn-primary" id="fetchBtn" onclick="runAnalysis()">⚡ FETCH &amp; ANALYZE</button>
-  <button class="btn btn-secondary" onclick="loadKnownPosts()" style="white-space:nowrap;">Load 23 Verified Posts</button>
+  <button class="btn btn-secondary" onclick="loadKnownPosts()" style="white-space:nowrap;">Load 34 Verified Posts</button>
   <div class="view-toggle">
     <button class="view-btn active" onclick="setView('timeline')" id="vbtn-timeline">Timeline</button>
     <button class="view-btn" onclick="setView('graph')" id="vbtn-graph">Logic Graph</button>
@@ -507,7 +507,7 @@ async function fetchWithProxy(url) {
       }
     } catch(e) { /* try next proxy */ }
   }
-  throw new Error('All CORS proxies failed \u2014 use "Load 23 Verified Posts" instead.');
+  throw new Error('All CORS proxies failed \u2014 use "Load 34 Verified Posts" instead.');
 }
 
 function setView(v) {
@@ -836,7 +836,7 @@ async function runAnalysis() {
         <br><br>
         <strong>Options:</strong><br>
         1. Enter an Anthropic API key above to enable live AI analysis<br>
-        2. Click <strong>"Load 23 Verified Posts"</strong> to use the pre-built corpus (no key needed)<br>
+        2. Click <strong>"Load 34 Verified Posts"</strong> to use the pre-built corpus (no key needed)<br>
         3. Raw feed: <a href="https://www.trumpstruth.org/feed?start_date=${document.getElementById('startDate').value}&end_date=${document.getElementById('endDate').value}" target="_blank" style="color:#5588ff">trumpstruth.org/feed</a>
       </div>`;
     document.getElementById('error-state').style.display = 'block';
@@ -1038,6 +1038,94 @@ async function loadKnownPosts() {
       analysis:'48-hour power plant ultimatum expired — instead of striking, Trump announces diplomatic talks have been ongoing for two days and postpones strikes for five days. Complete reversal of post 21. Also note: first posting contained typos ("PLEASE," "WITCH") and was reposted corrected — the original typo version (status 37408) remains archived.',
       contradicts:[20,21,22], contradictionReason:'Post 20: "I don\'t want a deal." Post 21: obliterate power plants in 48 hours. Post 22: Iran is dead. Post 23: actually we\'ve been in "very good and productive conversations" for two days and are postponing all strikes — the exact opposite outcome of the ultimatum.'
     },
+    {
+      index:24, date:'2026-04-06',
+      source:'RSS',
+      text:'Tuesday will be Power Plant Day, and Bridge Day, all wrapped up in one, in Iran. There will be nothing like it! Open the f––in\' Strait, you crazy bastards, or you\'ll be living in Hell - JUST WATCH!',
+      category:'threat',
+      analysis:'Easter Sunday post threatening to strike Iranian power plants and bridges simultaneously — civilian infrastructure targeting that legal analysts flagged as a potential war crime. Comes weeks after the Mar 23 "productive conversations" that postponed all strikes.',
+      contradicts:[23], contradictionReason:'Post 23 (Mar 23) announced ongoing "very good and productive conversations" and postponed all strikes — post 24 returns to threatening mass strikes on power plants and bridges.'
+    },
+    {
+      index:25, date:'2026-04-07',
+      source:'RSS',
+      text:'A whole civilization will die tonight, never to be brought back again. I don\'t want that to happen, but it probably will. However, now that we have Complete and Total Regime Change, where different, smarter, and less radicalized minds prevail, maybe something revolutionarily wonderful can happen, WHO KNOWS?',
+      category:'threat',
+      analysis:'Apocalyptic deadline post warning of the annihilation of an entire civilization — while simultaneously claiming "Complete and Total Regime Change" has already happened. Amnesty International cited it as an apparent threat of atrocity crimes.',
+      contradicts:[], contradictionReason:''
+    },
+    {
+      index:26, date:'2026-04-07',
+      source:'RSS',
+      text:'Based on conversations with Prime Minister Shehbaz Sharif and Field Marshal Asim Munir, of Pakistan, and wherein they requested that I hold off the destructive force being sent tonight to Iran, and subject to the Islamic Republic of Iran agreeing to the COMPLETE, IMMEDIATE, and SAFE OPENING of the Strait of Hormuz, I agree to suspend the bombing and attack of Iran for a period of two weeks.',
+      category:'deescalation',
+      analysis:'Roughly 90 minutes before his own deadline — and hours after warning a "whole civilization will die tonight" — announces a two-week suspension of all strikes. The threatened annihilation never comes.',
+      contradicts:[25], contradictionReason:'Post 25 (same day) said a "whole civilization will die tonight, never to be brought back again" — post 26 suspends all bombing for two weeks hours later.'
+    },
+    {
+      index:27, date:'2026-04-12',
+      source:'RSS',
+      text:'Effective immediately, the United States Navy, the Finest in the World, will begin the process of BLOCKADING any and all Ships trying to enter, or leave, the Strait of Hormuz. Most points were agreed to, but the only point that really mattered, NUCLEAR, was not. We will also seek and interdict every vessel in International Waters that has paid a toll to Iran.',
+      category:'escalation',
+      analysis:'Five days into the two-week ceasefire, talks in Pakistan collapse and Trump announces a full naval blockade of Hormuz — a major escalation that abandons the suspension declared in post 26.',
+      contradicts:[26], contradictionReason:'Post 26 suspended all bombing and attacks for two weeks (Apr 7) — post 27 launches a full naval blockade just five days later, before the two-week window expired.'
+    },
+    {
+      index:28, date:'2026-04-29',
+      source:'RSS',
+      text:'Iran can\'t get their act together. They don\'t know how to sign a nonnuclear deal. They better get smart soon!',
+      category:'threat',
+      analysis:'Accompanied by an AI-generated image of Trump holding a gun. Frames the stalled talks as entirely Iran\'s failure, weeks after the blockade he ordered choked off their economy.',
+      contradicts:[], contradictionReason:''
+    },
+    {
+      index:29, date:'2026-05-06',
+      source:'RSS',
+      text:'If Iran agrees, Operation Epic Fury will be at an end, and the Hormuz Strait will be OPEN TO ALL, including Iran. If they don\'t agree, the bombing starts, and it will be, sadly, at a much higher level and intensity than it was before.',
+      category:'threat',
+      analysis:'Deal-or-destruction framing: offers to end "Operation Epic Fury" and open Hormuz to all, paired with a threat to bomb at "a much higher level" than before. Naming the operation also formalizes a campaign previously described as already "won."',
+      contradicts:[], contradictionReason:''
+    },
+    {
+      index:30, date:'2026-06-10',
+      source:'RSS',
+      text:'The Fake News Media refuses to report how EFFECTIVE the U.S. Naval BLOCKADE is, the most successful Blockade in the history of Naval Warfare. NOTHING GETS THROUGH unless we want it to. IT IS A STEEL WALL! Iran is doing ZERO business, not paying their military, or any of their bills, and quickly becoming a FAILED NATION!',
+      category:'claim',
+      analysis:'Declares the blockade a total "STEEL WALL" success and Iran a collapsing "FAILED NATION" — the same day he separately warned Iran would "pay the price" for having "taken too long" to make a deal, which presumes Iran still has leverage to bargain away.',
+      contradicts:[], contradictionReason:''
+    },
+    {
+      index:31, date:'2026-06-11',
+      source:'RSS',
+      text:'I have just cancelled the planned Strikes against Iran. Great progress is being made, and I didn\'t want to interfere with a Deal that is very close to getting done. Iran wants to make a deal, and so do we!',
+      category:'deescalation',
+      analysis:'Cancels planned strikes citing "great progress," one day after declaring Iran a collapsing "FAILED NATION" with no money to pay its military. "Iran wants to make a deal, and so do we" reverses months of deal-rejection framing.',
+      contradicts:[30], contradictionReason:'Post 30 (Jun 10) called Iran a "FAILED NATION" being crushed by a "STEEL WALL" blockade and warned they would "pay the price" — post 31 (Jun 11) cancels strikes citing "great progress" toward a deal both sides want.'
+    },
+    {
+      index:32, date:'2026-06-12',
+      source:'RSS',
+      text:'The terms that Iran leaked out to the Fake News have nothing to do with the terms that were agreed to, in writing. Very dishonorable people to deal with. With them, there is no such thing as dealing in good faith. They better get their act together!',
+      category:'contradiction',
+      analysis:'Insists terms were "agreed to, in writing" while simultaneously saying Iran is incapable of "dealing in good faith" — a signed deal you claim the other side cannot be trusted to honor. Posted one day after touting "great progress."',
+      contradicts:[31], contradictionReason:'Post 31 (Jun 11) cited "great progress" and said "Iran wants to make a deal, and so do we" — post 32 (Jun 12) calls the Iranians "dishonorable" and says "there is no such thing as dealing in good faith" with them.'
+    },
+    {
+      index:33, date:'2026-06-15',
+      source:'RSS',
+      text:'The Deal with the Islamic Republic of Iran is now complete. Ships of the World, start your engines. Let the oil flow!',
+      category:'deescalation',
+      analysis:'Declares the deal "complete" three days after calling the Iranians "dishonorable" negotiators with no good faith. The celebratory "let the oil flow" framing presumes the blockade is ending.',
+      contradicts:[30,32], contradictionReason:'Post 32 (Jun 12) said there was "no such thing as dealing in good faith" with Iran; post 30 called them a "FAILED NATION" — post 33 (Jun 15) declares a "complete" deal with that same party.'
+    },
+    {
+      index:34, date:'2026-06-15',
+      source:'RSS',
+      text:'I don\'t know if you heard, but we ended the war with Iran today. They have agreed never to have a Nuclear Weapon. The Blockade will remain in place until this Transaction is finalized, which will be very soon!',
+      category:'claim',
+      analysis:'Declares the war "ended" and the deal done — then immediately adds the blockade stays up because the "Transaction" is not actually finalized. A completed deal and an active blockade pending finalization cannot both be true.',
+      contradicts:[33], contradictionReason:'Post 33 (same day) said the deal "is now complete" and to "let the oil flow" — post 34 keeps the blockade in place because the transaction is "not yet finalized," contradicting the claim that it is complete.'
+    },
   ];
 
   setStatus('Analyzing documented posts with Claude AI...', 'Using verified news sources', 'live');
@@ -1087,8 +1175,8 @@ Categories: contradiction | escalation | deescalation | threat | claim | neutral
   } catch(e) {
     // If no key or Claude API fails, render the known posts directly without AI enhancement
     const mockAnalysis = {
-      summary: 'Trump\'s Iran posts from Jan 2–Mar 23 trace a rhetorical arc from protest-threat to war announcement to victory declaration to new ultimatum to peace talks — each phase contradicting the last. Victory over Iran was declared at least five separate times. The most compressed contradiction in the corpus: on Mar 21, Trump posted "goals met, winding down" (19:13 GMT), "I don\'t want a deal" (20:37 GMT), and "obliterate power plants in 48 hours" (23:44 GMT). The resolution: two days later, he announced diplomatic talks had been ongoing throughout and postponed all strikes.',
-      themes: ['Serial victory declarations during active combat','Winding down vs. simultaneous escalation','Deal-seeking reversed to deal-rejection reversed to diplomacy','NATO needed vs. NATO irrelevant','Personal vendetta vs. national security framing','Hormuz as leverage — US responsibility vs. not US problem'],
+      summary: 'Trump\'s Iran posts from Jan 2 to Jun 15 trace a rhetorical arc from protest-threat to war, to repeated victory declarations, to an ultimatum-driven naval blockade, and finally to a "complete" peace deal — each phase contradicting the last. Victory or the war\'s end was declared at least seven separate times across five months; the Strait of Hormuz was alternately "not our problem," a "STEEL WALL" blockade, and then reopened with "let the oil flow." The defining pattern is the same-day reversal: "a whole civilization will die tonight" gave way to a two-week ceasefire within hours, and a deal declared "complete" on Jun 15 was immediately qualified by a blockade that would "remain in place" because nothing was actually finalized.',
+      themes: ['Serial victory and "war is over" declarations','Same-day threat-then-ceasefire reversals','Deal-seeking ↔ deal-rejection ↔ "no good faith" ↔ "deal complete"','Hormuz: not our problem ↔ STEEL WALL blockade ↔ let the oil flow','Civilian-infrastructure threats (power plants, bridges, "whole civilization")','Personal vendetta vs. national-security vs. MAGA-ideology justifications'],
       posts: knownPosts,
       contradictionClusters: [
         {
@@ -1115,15 +1203,30 @@ Categories: contradiction | escalation | deescalation | threat | claim | neutral
           label: 'War Justification Drift',
           description: 'Casus belli shifted: "imminent threat to Americans" (Feb 28) → personal assassination payback (Mar 2) → MAGA ideology (Mar 16) → nuclear prevention (throughout).',
           postIndexes: [4,6,12]
+        },
+        {
+          label: 'The Apr 7 Whiplash',
+          description: '"A whole civilization will die tonight, never to be brought back again" — then, ~90 minutes before his own deadline, a two-week suspension of all bombing. The threatened annihilation never came.',
+          postIndexes: [25,26]
+        },
+        {
+          label: 'Ceasefire On, Ceasefire Off',
+          description: 'Two-week suspension (Apr 7) → full naval blockade five days later when talks collapsed (Apr 12) → strikes cancelled again for "great progress" (Jun 11) → "deal complete" (Jun 15) with the blockade still running.',
+          postIndexes: [26,27,31,33,34]
+        },
+        {
+          label: 'Complete Deal vs. No Good Faith',
+          description: 'Jun 12: Iran are "dishonorable" people and "there is no such thing as dealing in good faith." Jun 15: "The Deal ... is now complete," "we ended the war with Iran today" — yet the blockade stays up until the "Transaction is finalized."',
+          postIndexes: [32,33,34]
         }
       ],
       stats: {
         totalAnalyzed: knownPosts.length,
-        contradictions: 6,
-        escalations: 4,
-        deescalations: 3,
-        threats: 4,
-        claims: 8
+        contradictions: 25,
+        escalations: 6,
+        deescalations: 6,
+        threats: 8,
+        claims: 12
       }
     };
     analysisData = mockAnalysis;
