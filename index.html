@@ -413,6 +413,7 @@
   </div>
   <button class="btn btn-primary" id="fetchBtn" onclick="runAnalysis()">Fetch &amp; Analyze</button>
   <button class="btn btn-secondary" onclick="loadKnownPosts()" style="white-space:nowrap;">Load 34 Verified Posts</button>
+  <button class="btn btn-secondary" onclick="exportSnapshot()" style="white-space:nowrap;" title="Download the current data as iran-posts-snapshot.json — commit it next to this page to make it the default photograph.">⤓ Export Snapshot</button>
   <div class="view-toggle">
     <button class="view-btn active" onclick="setView('timeline')" id="vbtn-timeline">Timeline</button>
     <button class="view-btn" onclick="setView('graph')" id="vbtn-graph">Logic Graph</button>
@@ -423,15 +424,16 @@
   <span><span class="status-dot" id="statusDot"></span><span id="statusText">Ready — load the verified corpus or fetch a date range</span></span>
   <span id="statusCount"></span>
   <span id="statusPhase"></span>
+  <span id="snapStatus" style="margin-left:auto;color:var(--gold);"></span>
 </div>
 
 <main>
   <div id="empty-state" class="empty-state">
     <div class="empty-icon">🗞️</div>
     <h2>No Data Loaded</h2>
-    <p>Click <strong>Load 34 Verified Posts</strong> for the curated corpus (no key needed), or <strong>Fetch &amp; Analyze</strong> to pull a custom date range from trumpstruth.org and map the logic flow live.</p>
+    <p><strong>Fetch &amp; Analyze</strong> pulls every Iran-related post in the date range straight from the trumpstruth.org archive and analyzes it with no API key needed — that's how you get the full volume. Then click <strong>Export Snapshot</strong> to freeze it as <code>iran-posts-snapshot.json</code>; commit that file next to this page and it loads automatically as the default photograph. <strong>Load 34 Verified Posts</strong> gives the curated offline corpus in the meantime.</p>
     <div class="rss-info">
-      Data source: <a href="https://www.trumpstruth.org/about" target="_blank">trumpstruth.org</a> — public archive of all Trump Truth Social posts.
+      Data source: <a href="https://www.trumpstruth.org/about" target="_blank">trumpstruth.org</a> — public archive of all Trump Truth Social posts. An Anthropic API key (optional) upgrades the keyless heuristic pass to a deeper Claude analysis on refresh.
     </div>
   </div>
 
@@ -647,7 +649,7 @@ Return this structure:
     headers: { 'Content-Type': 'application/json', 'x-api-key': userApiKey, 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' },
     body: JSON.stringify({
       model: 'claude-sonnet-4-20250514',
-      max_tokens: 1000,
+      max_tokens: 8000,
       system: systemPrompt,
       messages: [{ role: 'user', content: `Analyze these ${posts.length} Iran-related Trump posts:\n\n${postsText}` }]
     })
@@ -977,6 +979,154 @@ function catColor(cat) {
   return map[cat]||'#5d6477';
 }
 
+// ── KEYLESS HEURISTIC ANALYSIS ENGINE ──
+// Lets a live fetch produce a fully categorized, sentiment-scored, contradiction-mapped
+// dataset with NO API key — so a fetch of the whole date range surfaces the real volume.
+// An Anthropic key (optional) upgrades this to a deeper AI pass on refresh.
+const LEX = {
+  pos: ['peace','ceasefire','cease-fire','deal','agree','agreed','complete','progress','talks','negotiat','resolution','productive','wonderful','reopen','open to all','let the oil flow','thank you','historic','settlement','postpone','suspend','winding down','end the war','ended the war','good faith','breakthrough'],
+  neg: ['die','death','destroy','destroyed','obliterate','blow up','blown','kill','killed','hell','blood','bloodshed','terror','terrorist','failed','cowards','coward','dishonorable','war','attack','strike','hit','bomb','bombing','blockade','never','worse','wrath','demented','sick','violent','enemy','annihilat','massacre','decimat','crush','pay the price','death to america']
+};
+const CAT_KW = {
+  threat: ['obliterate','blow up','blown','blockade','48 hours','24 hours','ultimatum','or else','pay the price','living in hell','civilization will die','will die tonight','power plant','bridge day','wrath','far worse','much higher level','starting with the biggest','locked and loaded','armada','interdict'],
+  escalation: ['finish the job','finish off','go further','harsher','more troops','additional','escalat','ramp up','never rebuild','stay longer','just beginning','further and harsher','reinforce','deploy'],
+  deescalation: ['peace','ceasefire','cease-fire','postpone','suspend','winding down','end the war','ended the war','let the oil flow','reopen','open to all','resolution','very good and productive','great progress','cancelled the planned strikes','cancel the strikes','deal is now complete','deal is complete','agreed never','talks'],
+  claim: ['won','victory','already won','knocked out','no navy','no air force','decimated','destroyed','gone','failed nation','steel wall','finished','blown iran off','death of iran','we ended','completely destroyed','nothing gets through'],
+};
+function classifyPost(text){
+  const t = text.toLowerCase();
+  const order = ['threat','escalation','deescalation','claim'];
+  let best='neutral', bestN=0;
+  order.forEach(cat=>{ const n = CAT_KW[cat].reduce((s,k)=> s + (t.includes(k)?1:0), 0); if(n > bestN){ best=cat; bestN=n; } });
+  return best;
+}
+function sentimentScore(text){
+  const t = text.toLowerCase();
+  let pos=0, neg=0;
+  LEX.pos.forEach(w=>{ if(t.includes(w)) pos++; });
+  LEX.neg.forEach(w=>{ if(t.includes(w)) neg++; });
+  if(pos+neg===0) return 0;
+  let s = (pos-neg)/(pos+neg);
+  const caps = (text.match(/\b[A-Z]{3,}\b/g)||[]).length;
+  const bangs = (text.match(/!/g)||[]).length;
+  const intensity = Math.min(0.25, (caps+bangs)*0.03);
+  s = s>=0 ? Math.min(1, s+intensity) : Math.max(-1, s-intensity);
+  return +s.toFixed(2);
+}
+function stanceWar(t){ // +1 war won/over, -1 war ongoing/expanding
+  let s=0;
+  ['won','victory','already won','war is over','ended the war','we ended','finished','decimated','no navy','death of iran','blown iran off'].forEach(k=>{ if(t.includes(k)) s++; });
+  ['just beginning','finish the job','finish off','go further','harsher','rebuild','stay longer','more troops','escalat','far worse','next attack',"what's left",'left to'].forEach(k=>{ if(t.includes(k)) s--; });
+  return s>0?1:(s<0?-1:0);
+}
+function stanceDeal(t){ // +1 wants/has a deal, -1 rejects a deal
+  let s=0;
+  ['make a deal','wants to make a deal','want a deal','deal is now complete','deal is complete','agreed','negotiat','talks','resolution','peace','productive conversations','great progress','come to the table'].forEach(k=>{ if(t.includes(k)) s++; });
+  ["don't want a deal",'no deal','dishonorable','no such thing as','bombing starts','obliterate','pay the price','have nothing to do with'].forEach(k=>{ if(t.includes(k)) s--; });
+  return s>0?1:(s<0?-1:0);
+}
+function analyzeHeuristic(rawPosts){
+  let posts = rawPosts.map(p=>{
+    const text = (p.text || p.content || '').trim();
+    const dt = (p.date instanceof Date) ? p.date : new Date(p.date || p.pubDate || Date.now());
+    return { date: dt.toISOString().slice(0,10), text, source:'RSS', link:p.link||'',
+      category: classifyPost(text), sentiment: sentimentScore(text),
+      contradicts:[], contradictionReason:'', analysis:'' };
+  }).filter(p=>p.text).sort((a,b)=> new Date(a.date) - new Date(b.date));
+  posts.forEach((p,i)=> p.index = i+1);
+
+  const axes = [
+    {name:'war-status', fn:stanceWar, label:'War-status reversals', desc:'Posts that flip between declaring the war won/over and describing it as ongoing or escalating.', last:null, members:new Set()},
+    {name:'deal',       fn:stanceDeal, label:'Deal-stance reversals', desc:'Posts that flip between seeking or announcing a deal and rejecting one or calling the other side untrustworthy.', last:null, members:new Set()},
+  ];
+  posts.forEach(p=>{
+    const t = p.text.toLowerCase();
+    axes.forEach(ax=>{
+      const st = ax.fn(t);
+      if(st===0) return;
+      if(ax.last && st!==ax.last.st){
+        p.contradicts.push(ax.last.index);
+        const r = `Reverses an earlier ${ax.name} stance (post #${ax.last.index}).`;
+        p.contradictionReason = p.contradictionReason ? p.contradictionReason+' '+r : r;
+        ax.members.add(p.index); ax.members.add(ax.last.index);
+        if(p.category==='claim'||p.category==='neutral') p.category='contradiction';
+      }
+      ax.last = {st, index:p.index};
+    });
+  });
+  posts.forEach(p=>{ p.contradicts = [...new Set(p.contradicts)].sort((a,b)=>a-b); });
+
+  const clusters = axes.filter(a=>a.members.size).map(a=>({ label:a.label, description:a.desc, postIndexes:[...a.members].sort((x,y)=>x-y) }));
+  const tally = {contradiction:0,escalation:0,deescalation:0,threat:0,claim:0,neutral:0};
+  posts.forEach(p=> tally[p.category] = (tally[p.category]||0)+1);
+  const stats = { totalAnalyzed: posts.length,
+    contradictions: posts.filter(p=>p.contradicts.length).length,
+    escalations: tally.escalation, deescalations: tally.deescalation,
+    threats: tally.threat, claims: tally.claim };
+  const d0 = posts[0]?.date, d1 = posts[posts.length-1]?.date;
+  const summary = `Keyless heuristic snapshot of ${posts.length} Iran-related Truth Social posts from ${d0} to ${d1}. Auto-detected ${stats.contradictions} posts that reverse an earlier stance on war-status or deal framing, and scored each post's sentiment by lexicon. Add an Anthropic API key and re-run for a deeper AI pass with richer contradiction reasoning.`;
+  return { summary, themes:['Auto-classified from the live archive'], posts, contradictionClusters: clusters, stats, _engine:'heuristic' };
+}
+
+// ── SNAPSHOT (freeze the photograph) ──
+const SNAPSHOT_FILE = 'iran-posts-snapshot.json';
+const SNAPSHOT_LS = 'iranTrackerSnapshot';
+function snapshotMeta(analysis){
+  return { capturedAt:new Date().toISOString(),
+    range:{ from:document.getElementById('startDate').value, to:document.getElementById('endDate').value },
+    engine: analysis._engine || 'ai', count: analysis.posts.length };
+}
+function cacheSnapshot(analysis){
+  const meta = snapshotMeta(analysis);
+  try { localStorage.setItem(SNAPSHOT_LS, JSON.stringify({meta, analysis})); } catch(e){}
+  updateSnapshotBar(meta, 'cached in this browser');
+}
+function exportSnapshot(){
+  if(!analysisData){ alert('Run Fetch & Analyze (or Load Verified Posts) first, then export.'); return; }
+  const payload = { meta: snapshotMeta(analysisData), analysis: analysisData };
+  const blob = new Blob([JSON.stringify(payload,null,2)], {type:'application/json'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = SNAPSHOT_FILE; a.click();
+  setTimeout(()=>URL.revokeObjectURL(a.href), 2000);
+}
+function updateSnapshotBar(meta, where){
+  const el = document.getElementById('snapStatus'); if(!el || !meta) return;
+  el.textContent = `Snapshot: ${meta.count} posts · ${meta.range.from}→${meta.range.to} · ${meta.engine} · ${where}`;
+}
+async function tryLoadSnapshot(){
+  // 1) baked snapshot file committed alongside the page (the "photograph")
+  try {
+    const r = await fetch(SNAPSHOT_FILE, {cache:'no-store'});
+    if(r.ok){
+      const j = await r.json();
+      const analysis = j.analysis || j;
+      if(analysis && analysis.posts && analysis.posts.length){
+        document.getElementById('empty-state').style.display='none';
+        document.getElementById('results').style.display='block';
+        renderAll(analysis); setView(currentView);
+        updateSnapshotBar(j.meta || snapshotMeta(analysis), 'baked snapshot file');
+        setStatus(`Loaded baked snapshot — ${analysis.posts.length} posts`, '', 'live');
+        return true;
+      }
+    }
+  } catch(e){}
+  // 2) browser-cached snapshot from a previous fetch on this machine
+  try {
+    const raw = localStorage.getItem(SNAPSHOT_LS);
+    if(raw){
+      const j = JSON.parse(raw);
+      if(j.analysis && j.analysis.posts){
+        document.getElementById('empty-state').style.display='none';
+        document.getElementById('results').style.display='block';
+        renderAll(j.analysis); setView(currentView);
+        updateSnapshotBar(j.meta, 'cached in this browser');
+        setStatus(`Loaded cached snapshot — ${j.analysis.posts.length} posts`, 'click Fetch to refresh', '');
+        return true;
+      }
+    }
+  } catch(e){}
+  return false;
+}
+
 async function runAnalysis() {
   const startDate = document.getElementById('startDate').value;
   const endDate = document.getElementById('endDate').value;
@@ -1012,35 +1162,40 @@ async function runAnalysis() {
       throw new Error(`No Iran-related posts found in the date range ${startDate} to ${endDate}. Try widening the date range.`);
     }
 
-    // Phase 3: Analyze with Claude
-    setStatus(`Analyzing ${iranPosts.length} Iran posts with Claude AI...`, 'Phase 3/3', 'live');
-    showProgress(65);
-    const analysis = await analyzeWithClaude(iranPosts);
+    // Phase 3: Analyze — keyless heuristic by default, Claude AI when a key is set
+    let analysis;
+    if (userApiKey) {
+      setStatus(`Analyzing ${iranPosts.length} Iran posts with Claude AI...`, 'Phase 3/3', 'live');
+      showProgress(65);
+      try { analysis = await analyzeWithClaude(iranPosts); }
+      catch(e){ analysis = analyzeHeuristic(iranPosts); analysis.summary = '[AI pass failed — keyless heuristic used] ' + analysis.summary; }
+    } else {
+      setStatus(`Analyzing ${iranPosts.length} Iran posts (keyless heuristic engine)...`, 'Phase 3/3', 'live');
+      showProgress(65);
+      await new Promise(r=>setTimeout(r,150));
+      analysis = analyzeHeuristic(iranPosts);
+    }
     showProgress(95);
 
     document.getElementById('results').style.display = 'block';
     renderAll(analysis);
     setView(currentView);
+    cacheSnapshot(analysis);
 
     showProgress(100);
-    setStatus(`Analysis complete — ${analysis.posts.length} posts analyzed`, `${analysis.stats?.contradictions||0} contradictions found`, 'live');
+    setStatus(`Analysis complete — ${analysis.posts.length} posts ${analysis._engine==='heuristic' ? '(keyless)' : 'analyzed by Claude'}`, `${analysis.stats?.contradictions||0} contradicting posts`, 'live');
 
   } catch(e) {
-    if (e.message === 'NO_API_KEY') {
-      // No key — skip AI, go straight to mock analysis with known posts
-      loadKnownPosts();
-      return;
-    }
-    setStatus('Error during analysis', '', 'error');
+    setStatus('Could not fetch the live archive', '', 'error');
     showProgress(0);
     document.getElementById('error-state').innerHTML = `
       <div class="error-box">
-        <strong>Error:</strong> ${e.message}
+        <strong>Couldn't reach the live archive.</strong> ${esc(e.message)}
         <br><br>
-        <strong>Options:</strong><br>
-        1. Enter an Anthropic API key above to enable live AI analysis<br>
-        2. Click <strong>"Load 34 Verified Posts"</strong> to use the pre-built corpus (no key needed)<br>
-        3. Raw feed: <a href="https://www.trumpstruth.org/feed?start_date=${document.getElementById('startDate').value}&end_date=${document.getElementById('endDate').value}" target="_blank" style="color:#5588ff">trumpstruth.org/feed</a>
+        The browser's public CORS proxies are likely rate-limited or down. Options:<br>
+        1. Wait a minute and try <strong>Fetch &amp; Analyze</strong> again<br>
+        2. Click <strong>"Load 34 Verified Posts"</strong> for the curated offline corpus<br>
+        3. Open the raw feed directly: <a href="https://www.trumpstruth.org/feed?start_date=${document.getElementById('startDate').value}&end_date=${document.getElementById('endDate').value}" target="_blank">trumpstruth.org/feed</a>
       </div>`;
     document.getElementById('error-state').style.display = 'block';
   }
@@ -1355,7 +1510,7 @@ Categories: contradiction | escalation | deescalation | threat | claim | neutral
       headers: { 'Content-Type': 'application/json', 'x-api-key': userApiKey, 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' },
       body: JSON.stringify({
         model: 'claude-sonnet-4-20250514',
-        max_tokens: 1000,
+        max_tokens: 8000,
         system: systemPrompt,
         messages: [{ role: 'user', content: `Analyze these ${knownPosts.length} documented Trump Iran posts and return enhanced analysis:\n\n${postsText}` }]
       })
@@ -1445,8 +1600,9 @@ window.setView = function(v) {
   if(v==='graph' && analysisData) renderGraph(analysisData);
 };
 
-// Default view
+// Default view, then try to load a frozen snapshot (baked file, else browser cache)
 setView('timeline');
+tryLoadSnapshot();
 </script>
 </body>
 </html>
