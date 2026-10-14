@@ -1,0 +1,6 @@
+{
+  "extraKnownMarketplaces": {
+    "devteam": { "source": { "source": "github", "repo": "cremjin/devteam" } }
+  },
+  "enabledPlugins": { "devteam@devteam": true }
+}
