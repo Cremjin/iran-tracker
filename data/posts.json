@@ -180,14 +180,6 @@
     157,
     159
    ]
-  },
-  {
-   "label": "Complete Deal vs. No Good Faith",
-   "description": "Jun 12: Iranians are \"Very dishonorable\" and good faith is impossible. Jun 14: \"The Deal with the Islamic Republic of Iran is now complete.\"",
-   "posts": [
-    22,
-    23
-   ]
   }
  ],
  "posts": [
@@ -211,7 +203,7 @@
    "text": "Iranian Patriots, KEEP PROTESTING - TAKE OVER YOUR INSTITUTIONS!!! Save the names of the killers and abusers. They will pay a big price. I have cancelled all meetings with Iranian Officials until the senseless killing of protesters STOPS. HELP IS ON ITS WAY. MIGA!!! PRESIDENT DONALD J. TRUMP",
    "category": "escalation",
    "sentiment": -0.55,
-   "analysis": "Escalates from \"rescue\" to telling Iranians to take over their institutions — regime change by Truth Social post, never adopted as formal policy. \"MIGA!!!\"",
+   "analysis": "Escalates from promising rescue to telling Iranians to \"TAKE OVER YOUR INSTITUTIONS\" — regime change by Truth Social post, never adopted as formal policy. \"MIGA!!!\"",
    "contradicts": [],
    "contradictionReason": ""
   },
@@ -235,7 +227,7 @@
    "text": "I have just been informed that we have destroyed and sunk 9 Iranian Naval Ships, some of them relatively large and important. We are going after the rest — They will soon be floating at the bottom of the sea, also! In a different attack, we largely destroyed their Naval Headquarters. Other than that, their Navy is doing very well! PRESIDENT DONALD J. TRUMP",
    "category": "claim",
    "sentiment": -0.5,
-   "analysis": "Nine ships sunk and the naval headquarters \"largely destroyed\" — \"Other than that, their Navy is doing very well!\" The navy will be declared \"gone\" many more times.",
+   "analysis": "Nine ships sunk and the naval headquarters \"largely destroyed\" — \"Other than that, their Navy is doing very well!\" The navy will be declared gone many more times.",
    "contradicts": [],
    "contradictionReason": ""
   },
@@ -271,11 +263,9 @@
    "text": "I wonder what would happen if we “finished off” what’s left of the Iranian Terror State, and let the Countries that use it, we don’t, be responsible for the so called “Strait?” That would get some of our non-responsive “Allies” in gear, and fast!!! President DJT",
    "category": "escalation",
    "sentiment": -0.65,
-   "analysis": "Muses about \"finishing off\" what's left, a day after declaring everything gone. Hormuz becomes leverage over \"non-responsive Allies.\"",
-   "contradicts": [
-    6
-   ],
-   "contradictionReason": "Mar 17: Iran's military \"decimated,\" its leaders \"gone.\" Mar 18: what if we \"finished off\" what's left — so something is left."
+   "analysis": "Muses about having \"finished off\" what's left of the Iranian Terror State, with Hormuz as leverage over \"non-responsive\" allies.",
+   "contradicts": [],
+   "contradictionReason": ""
   },
   {
    "id": 8,
@@ -286,10 +276,8 @@
    "category": "threat",
    "sentiment": -0.6,
    "analysis": "Distances the US from Israel's South Pars strike, then threatens to blow up \"the entirety\" of the gas field itself — while saying he doesn't want to.",
-   "contradicts": [
-    6
-   ],
-   "contradictionReason": "Mar 17 declared Iran's military gone; two days later a new ultimatum is needed to stop Iranian attacks on Qatar."
+   "contradicts": [],
+   "contradictionReason": ""
   },
   {
    "id": 9,
@@ -303,7 +291,7 @@
    "contradicts": [
     6
    ],
-   "contradictionReason": "Mar 17: \"WE DO NOT NEED THE HELP OF ANYONE.\" Mar 20: NATO are cowards for not helping open the Strait."
+   "contradictionReason": "Mar 17: \"WE DO NOT NEED THE HELP OF ANYONE!\" Mar 20: NATO \"don’t want to help open the Strait of Hormuz\" and are \"COWARDS.\""
   },
   {
    "id": 10,
@@ -314,10 +302,8 @@
    "category": "deescalation",
    "sentiment": 0.1,
    "analysis": "First written list of war aims: five of them. Aim 3 (navy and air force) was declared achieved three days earlier. Hormuz is now officially someone else's job.",
-   "contradicts": [
-    9
-   ],
-   "contradictionReason": "That morning NATO were \"COWARDS\" for not opening Hormuz; that evening, policing Hormuz is something the US \"does not\" do."
+   "contradicts": [],
+   "contradictionReason": ""
   },
   {
    "id": 11,
@@ -327,12 +313,11 @@
    "text": "The United States has blown Iran off of the map, and yet their lightweight analyst, David Sanger, says that I haven’t met my own goals. Yes I have, and weeks ahead of schedule! Their leadership is gone, their navy and air force are dead, they have absolutely no defense, and they want to make a deal. I don’t! We are weeks ahead of schedule. Just like their incompetent Election coverage of me, The Failing New York Times always gets it wrong! President DJT",
    "category": "contradiction",
    "sentiment": -0.5,
-   "analysis": "\"They want to make a deal. I don't!\" — 67 minutes before a 48-hour ultimatum. Goals met \"weeks ahead of schedule,\" a day after being \"very close\" to them.",
+   "analysis": "\"They want to make a deal. I don't!\" — 67 minutes before a 48-hour ultimatum. Goals met \"weeks ahead of schedule.\"",
    "contradicts": [
-    3,
-    10
+    3
    ],
-   "contradictionReason": "Jan 28: \"MAKE A DEAL!\" Mar 21: they want a deal, \"I don't!\" And Mar 20's \"getting very close\" to the objectives became \"weeks ahead of schedule\" overnight."
+   "contradictionReason": "Jan 28: \"MAKE A DEAL!\" Mar 21: \"they want to make a deal. I don’t!\""
   },
   {
    "id": 12,
@@ -344,10 +329,9 @@
    "sentiment": -0.9,
    "analysis": "The most extreme threat yet — power plants, \"STARTING WITH THE BIGGEST ONE FIRST\" — an hour after declaring every goal met.",
    "contradicts": [
-    10,
-    11
+    10
    ],
-   "contradictionReason": "Mar 20: \"winding down.\" Mar 21, 22:37 UTC: goals met. Mar 21, 23:44 UTC: obliterate the power grid in 48 hours."
+   "contradictionReason": "Mar 20: \"we consider winding down our great Military efforts.\" Mar 21: the US \"will hit and obliterate their various POWER PLANTS.\""
   },
   {
    "id": 13,
@@ -357,11 +341,9 @@
    "text": "Now with the death of Iran, the greatest enemy America has is the Radical Left, Highly Incompetent, Democrat Party! Thank you for your attention to this matter. President DJT",
    "category": "claim",
    "sentiment": -0.7,
-   "analysis": "Declares \"the death of Iran\" and moves on to the Democrats — while his own 48-hour ultimatum is still ticking.",
-   "contradicts": [
-    12
-   ],
-   "contradictionReason": "A live ultimatum against Iran (Mar 21) and the announcement of Iran's death (Mar 22) are in force at the same time."
+   "analysis": "Declares \"the death of Iran\" and moves on to the Democrats, the morning after a 48-hour ultimatum.",
+   "contradicts": [],
+   "contradictionReason": ""
   },
   {
    "id": 14,
@@ -374,10 +356,9 @@
    "analysis": "The ultimatum dissolves into two days of \"VERY GOOD AND PRODUCTIVE CONVERSATIONS\" — which covers the day he said he didn't want a deal.",
    "contradicts": [
     11,
-    12,
-    13
+    12
    ],
-   "contradictionReason": "Mar 21: \"I don't\" want a deal; power plants in 48 hours. Mar 22: Iran is dead. Mar 23: talks for two days, strikes postponed."
+   "contradictionReason": "Mar 21: \"they want to make a deal. I don’t!\" and \"hit and obliterate their various POWER PLANTS.\" Mar 23: \"VERY GOOD AND PRODUCTIVE CONVERSATIONS\" and \"POSTPONE ANY AND ALL MILITARY STRIKES AGAINST IRANIAN POWER PLANTS.\""
   },
   {
    "id": 15,
@@ -388,10 +369,8 @@
    "category": "threat",
    "sentiment": -0.85,
    "analysis": "Easter Sunday: \"Power Plant Day, and Bridge Day,\" an expletive, and \"Praise be to Allah.\" Civilian infrastructure is back on the list.",
-   "contradicts": [
-    14
-   ],
-   "contradictionReason": "Mar 23 postponed strikes on power plants because talks were productive; Apr 5 schedules them for Tuesday."
+   "contradicts": [],
+   "contradictionReason": ""
   },
   {
    "id": 16,
@@ -417,7 +396,7 @@
    "contradicts": [
     16
    ],
-   "contradictionReason": "Morning: a whole civilization \"will die tonight.\" Evening: bombing suspended for two weeks."
+   "contradictionReason": "Apr 7, morning: \"A whole civilization will die tonight.\" Apr 7, evening: \"I agree to suspend the bombing and attack of Iran for a period of two weeks.\""
   },
   {
    "id": 18,
@@ -428,10 +407,8 @@
    "category": "escalation",
    "sentiment": -0.7,
    "analysis": "Talks fail on \"NUCLEAR\"; a full naval blockade begins five days into the two-week ceasefire. Iran's tolls are \"WORLD EXTORTION.\" Navy and Air Force: gone, again.",
-   "contradicts": [
-    17
-   ],
-   "contradictionReason": "Apr 7 suspended all attacks for two weeks to finalize an agreement; Apr 12 blockades the Strait."
+   "contradicts": [],
+   "contradictionReason": ""
   },
   {
    "id": 19,
@@ -490,10 +467,8 @@
    "category": "deescalation",
    "sentiment": 0.85,
    "analysis": "The deal is \"now complete.\" Blockade lifted, tolls gone: \"Ships of the World, start your engines. Let the oil flow!\"",
-   "contradicts": [
-    22
-   ],
-   "contradictionReason": "Jun 12: with Iran \"there is no such thing as dealing in good faith.\" Jun 14: a complete deal with the same people."
+   "contradicts": [],
+   "contradictionReason": ""
   },
   {
    "id": 24,
@@ -623,7 +598,7 @@
    "text": "There is no 300 Billion Dollar payment to Iran by the U.S. That’s Fake News! All there is for the U.S. is Success, Lower Oil Prices, and Victory. Check out the Stock Market. Dumocrat propaganda at play!!! President DJT",
    "category": "claim",
    "sentiment": 0.2,
-   "analysis": "No payment to Iran — now \"300 Billion Dollars\" is the Fake News figure. Three days earlier it was 300 million.",
+   "analysis": "\"There is no 300 Billion Dollar payment\" to Iran. Three days earlier, the Fake News figure was 300 million.",
    "contradicts": [],
    "contradictionReason": ""
   },
@@ -720,10 +695,8 @@
    "category": "claim",
    "sentiment": -0.1,
    "analysis": "No tolls in Hormuz — unless they are American, \"for services rendered as the Guardian Angel\" of the Middle East.",
-   "contradicts": [
-    18
-   ],
-   "contradictionReason": "Apr 12: tolls in the Strait are \"WORLD EXTORTION\" and toll-payers lose safe passage. Jun 20: tolls are fine if the US collects them."
+   "contradicts": [],
+   "contradictionReason": ""
   },
   {
    "id": 43,
@@ -734,10 +707,8 @@
    "category": "threat",
    "sentiment": -0.7,
    "analysis": "Iran must rein in its \"highly paid PROXIES\" in Lebanon or be hit \"very hard again, just like we did last week.\"",
-   "contradicts": [
-    23
-   ],
-   "contradictionReason": "Jun 14: \"The Deal with the Islamic Republic of Iran is now complete.\" Jun 21: we hit Iran \"last week.\""
+   "contradicts": [],
+   "contradictionReason": ""
   },
   {
    "id": 44,
@@ -759,7 +730,7 @@
    "text": "The headline in the Corrupt and Failing New York Times: “What Changed After Almost 4 Months of War? Analysts Say Not Much.” REALLY? Their Military is DONE, their Navy is GONE, their Air Force is GONE, their Launching Pads, Missiles, Drones and Manufacturing of same, is almost GONE, their top two sets of Leaders are GONE, their Inflation is at 250%, their Economy is BROKEN, their Soldiers aren’t being paid, the Hormuz Strait is OPEN, THE OIL IS GUSHING, and the U.S. Stock Market and Jobs are at record HIGHS. That’s what’s CHANGED, you corrupt and unethical cowards, and MORE!!! President DJT",
    "category": "claim",
    "sentiment": -0.5,
-   "analysis": "Rebuts a \"Not Much Changed\" headline with a list: military DONE, Navy GONE, Air Force GONE, \"THE OIL IS GUSHING.\"",
+   "analysis": "Rebuts a headline (\"Analysts Say Not Much\") with a list: military DONE, Navy GONE, Air Force GONE, \"THE OIL IS GUSHING.\"",
    "contradicts": [],
    "contradictionReason": ""
   },
@@ -808,11 +779,8 @@
    "category": "deescalation",
    "sentiment": 0.6,
    "analysis": "Inspections \"long into the future (Infinity!!!),\" the blockade lifted — and released money placed in an American-controlled escrow for American farm goods.",
-   "contradicts": [
-    37,
-    34
-   ],
-   "contradictionReason": "Jun 18: no payment to Iran is \"Fake News\"; Jun 19: Iran gets \"not ten cents!\" Jun 23: money and sanctions relief released into escrow on Iran's behalf."
+   "contradicts": [],
+   "contradictionReason": ""
   },
   {
    "id": 50,
@@ -846,7 +814,7 @@
    "text": "So, I have Iran on the “ropes,” ready to go down for the fall, willing to give us practically anything, and for the first time in decades, respecting the hell out of the United States and its President, ME, and the U.S. Senate decides to have a poorly timed and meaningless War Powers Act Vote, telling the Number One Sponser of Terror in the World that the United States doesn’t  like what I am doing to them, and I must stop, and by so doing has provided aid and comfort the Enemy. Four Republican Losers voted with the Dumocrats, and Iran asked my people, “what does that all mean?” These Senators have just made my job more difficult, but I will get it done, one way or the other, because I always get it done! President DJT",
    "category": "claim",
    "sentiment": -0.4,
-   "analysis": "Iran is \"on the ropes\" — and a War Powers vote gave \"aid and comfort to the Enemy.\" \"I always get it done!\"",
+   "analysis": "Iran is on the ropes, he says, and a War Powers vote \"provided aid and comfort the Enemy.\" \"I always get it done!\"",
    "contradicts": [],
    "contradictionReason": ""
   },
@@ -907,10 +875,8 @@
    "category": "escalation",
    "sentiment": -0.6,
    "analysis": "Four Iranian attack drones at Hormuz shipping, one hit — \"a foolish violation of our Ceasefire Agreement.\"",
-   "contradicts": [
-    23
-   ],
-   "contradictionReason": "Jun 14: the deal is \"complete\" and ships should \"start your engines.\" Jun 26: drones hitting those ships, under a \"Ceasefire Agreement.\""
+   "contradicts": [],
+   "contradictionReason": ""
   },
   {
    "id": 58,
@@ -924,7 +890,7 @@
    "contradicts": [
     38
    ],
-   "contradictionReason": "Jun 20: Iran \"completely defeated militarily.\" Jun 27: the job still needs to be completed."
+   "contradictionReason": "Jun 20: Iran’s \"Country being completely defeated militarily.\" Jun 27: the US may be \"forced to militarily complete the job that we very successfully started.\""
   },
   {
    "id": 59,
@@ -1070,7 +1036,7 @@
    "contradicts": [
     37
    ],
-   "contradictionReason": "Jun 19: \"We'll play out the 60 days.\" Jul 10, day 26: the ceasefire is over."
+   "contradictionReason": "Jun 19: \"We’ll play out the 60 days.\" Jul 10: \"the Cease Fire is OVER!\""
   },
   {
    "id": 71,
@@ -1094,10 +1060,9 @@
    "sentiment": -0.6,
    "analysis": "Blockade reinstated, renamed \"THE IRANIAN BLOCKADE.\" The US is now \"THE GUARDIAN OF THE HORMUZ STRAIT,\" at 20% of all cargo.",
    "contradicts": [
-    10,
-    49
+    10
    ],
-   "contradictionReason": "Mar 20: Hormuz must be policed \"by other Nations who use it — The United States does not!\" Jun 23: reinstating the blockade \"seems ... highly unlikely.\" Jul 13: the US is the Strait's guardian, blockade back on."
+   "contradictionReason": "Mar 20: the Strait \"will have to be guarded and policed, as necessary, by other Nations who use it — The United States does not!\" Jul 13: the US will be known as \"THE GUARDIAN OF THE HORMUZ STRAIT.\""
   },
   {
    "id": 73,
@@ -1135,7 +1100,7 @@
    "contradicts": [
     72
    ],
-   "contradictionReason": "Jul 13: 20% of all cargo reimburses the US. Jul 14: replaced with investment deals."
+   "contradictionReason": "Jul 13: the US \"will be reimbursed, at the rate of 20% on all cargo shipped.\" Jul 14: \"I have decided to replace the 20% United States Reimbursement Fee.\""
   },
   {
    "id": 76,
@@ -1290,10 +1255,8 @@
    "category": "deescalation",
    "sentiment": 0.3,
    "analysis": "Locked and loaded \"at levels of Military Terror ... not seen since World War II\" — then the attack is cancelled because \"the perimeters of a deal\" are agreed.",
-   "contradicts": [
-    70
-   ],
-   "contradictionReason": "Jul 10: the ceasefire is \"OVER!\" Aug 2: the attack is cancelled, a deal is near."
+   "contradicts": [],
+   "contradictionReason": ""
   },
   {
    "id": 89,
@@ -1313,13 +1276,11 @@
    "time": "2026-08-03T15:25:55Z",
    "url": "https://www.trumpstruth.org/statuses/40465",
    "text": "Iranian Leadership is unbelievably duplicitous! They ask for a meeting, some would say “beg,” talks begin, with more scheduled in the immediate future, and they say, openly and proudly, that they’re not having any discussions, that nothing is being talked about, and they’re only dealing with “Oman.” They then go on to give their usual blather in saying, the Strait of Hormuz will be operated powerfully by them, when it is already completely controlled by the United States Navy and our “Blockade” or, as some say, “The United States Wall of Steel!” Nothing gets through to Iran, unless we want it to, and nothing will get through, unless a Deal, or Total Surrender, is accomplished. Whether Iran wants to admit it or not, we are, in fact, talking of a solution to a problem that they have caused, for decades. It is very simple, IRAN WILL NEVER HAVE A NUCLEAR WEAPON! Thank you for your attention to this matter. President DONALD J. TRUMP",
-   "category": "contradiction",
+   "category": "claim",
    "sentiment": -0.6,
-   "analysis": "Iran is \"unbelievably duplicitous\" for denying talks are happening — the day after the deal's \"perimeters\" were agreed.",
-   "contradicts": [
-    88
-   ],
-   "contradictionReason": "Aug 2: \"the perimeters of a deal has been agreed to.\" Aug 3: the other side says nothing is being discussed, and a deal \"or Total Surrender\" is required."
+   "analysis": "Iran is \"unbelievably duplicitous\" for saying no talks are happening; he says \"we are, in fact, talking of a solution.\"",
+   "contradicts": [],
+   "contradictionReason": ""
   },
   {
    "id": 91,
@@ -1417,7 +1378,7 @@
    "contradicts": [
     10
    ],
-   "contradictionReason": "Mar 20: the Strait is for \"other Nations who use it\" to police — \"The United States does not!\" Aug 12: we'll keep it."
+   "contradictionReason": "Mar 20: the Strait is for \"other Nations who use it\" to police — \"The United States does not!\" Aug 12: \"I THINK WE WILL KEEP IT!\""
   },
   {
    "id": 99,
@@ -1476,10 +1437,8 @@
    "category": "claim",
    "sentiment": -0.2,
    "analysis": "\"There are no talks or conversations going on, or scheduled.\" Blockade in force; all mines gone.",
-   "contradicts": [
-    88
-   ],
-   "contradictionReason": "Aug 2: a deal's \"perimeters\" agreed and the attack cancelled \"subject to being able to rapidly make a DEAL.\" Aug 18: no talks, none scheduled."
+   "contradicts": [],
+   "contradictionReason": ""
   },
   {
    "id": 104,
@@ -1789,11 +1748,9 @@
    "text": "Iran is officially a Failed Nation. IT IS DEAD! They have no Navy, they have no Air Force, they have no currency, they are not paying their soldiers or police, Inflation is at 300%, and their leadership is in total disarray and incapable of properly representing the country. The only thing they have is FAKE NEWS from the USA, a willingness to kill their protesters (now over 100,000 people dead. They must be tried for war crimes against humanity!), and a good line of “BULLSHIT.” Thank you for your attention to this matter! President DONALD J.TRUMP",
    "category": "claim",
    "sentiment": -0.7,
-   "analysis": "\"Iran is officially a Failed Nation. IT IS DEAD!\" Its remaining assets: Fake News and \"a good line of BULLSHIT.\"",
-   "contradicts": [
-    13
-   ],
-   "contradictionReason": "Mar 22 already announced \"the death of Iran.\" Aug 31: it is dead, officially."
+   "analysis": "\"Iran is officially a Failed Nation. IT IS DEAD!\" Its remaining assets, per the post: Fake News and a good line of BS.",
+   "contradicts": [],
+   "contradictionReason": ""
   },
   {
    "id": 130,
@@ -1828,10 +1785,8 @@
    "category": "escalation",
    "sentiment": -0.8,
    "analysis": "Strikes \"as we speak,\" in retaliation for a failed mine-laying and missiles at a base in Jordan. The \"biggest attack of them all\" is still \"waiting in the wings.\"",
-   "contradicts": [
-    129
-   ],
-   "contradictionReason": "Aug 31: Iran is \"DEAD.\" Sep 1: it is firing missiles at a US base and needs the biggest attack yet."
+   "contradicts": [],
+   "contradictionReason": ""
   },
   {
    "id": 133,
@@ -1839,13 +1794,11 @@
    "time": "2026-09-02T01:13:08Z",
    "url": "https://www.trumpstruth.org/statuses/41477",
    "text": "I’m not trying to force Iran to the bargaining table, as ABC Fake News reported. I couldn’t care less if they sign a worthless, to them, agreement. I like our position now much better, with almost total control of the Hormuz Strait, and their economy totally collapsing. They are just playing out the inevitable. When are the Iranian people going to rise up and fight? President DJT",
-   "category": "contradiction",
+   "category": "claim",
    "sentiment": -0.4,
    "analysis": "Not forcing Iran to the table: \"I couldn't care less if they sign.\" When will Iranians \"rise up and fight?\"",
-   "contradicts": [
-    104
-   ],
-   "contradictionReason": "Aug 19: no one gave Iran \"a greater opportunity to make a Deal,\" and its refusal triggered Economic D-Day. Sep 2: he couldn't care less if they sign."
+   "contradicts": [],
+   "contradictionReason": ""
   },
   {
    "id": 134,
@@ -1867,7 +1820,7 @@
    "text": "Now that we have it under U.S.A. control, should we change the name Hormuz Strait to TRUMP STRAIT??? Like America itself, it would be “hotter” than ever before! Thank you for your attention to this matter. President DONALD J. TRUMP",
    "category": "claim",
    "sentiment": -0.2,
-   "analysis": "Should the Hormuz Strait be renamed the \"TRUMP STRAIT\"? It would be \"hotter than ever before!\"",
+   "analysis": "Should the Hormuz Strait be renamed the \"TRUMP STRAIT\"? It would be hotter than ever.",
    "contradicts": [],
    "contradictionReason": ""
   },
@@ -1955,7 +1908,7 @@
    "contradicts": [
     9
    ],
-   "contradictionReason": "Mar 20: the fight is \"Militarily WON.\" Sep 7: prices will fall \"when we WIN the war.\""
+   "contradictionReason": "Mar 20: \"Now that fight is Militarily WON.\" Sep 7: prices will drop \"when we WIN the war with Iran.\""
   },
   {
    "id": 143,
@@ -1990,10 +1943,8 @@
    "category": "deescalation",
    "sentiment": 0.3,
    "analysis": "Iran \"wants to make a deal, quickly and badly\"; engaging is a \"concept of which we are open to.\"",
-   "contradicts": [
-    133
-   ],
-   "contradictionReason": "Sep 2: he \"couldn't care less\" if Iran signs. Sep 14: open to the concept."
+   "contradicts": [],
+   "contradictionReason": ""
   },
   {
    "id": 146,
@@ -2013,13 +1964,11 @@
    "time": "2026-09-14T16:31:39Z",
    "url": "https://www.trumpstruth.org/statuses/41718",
    "text": "I hope everyone realizes that price increases throughout America were caused by Sleepy Joe Biden and the Biden Administration, not by “TRUMP.” Even Oil was higher under Biden than it is right now, and we prevented Iran from having a Nuclear Weapon! With the temporary exception of Oil, prices are coming down sharply, and Oil will drop like a rock as soon as the Military Conflict with Iran is over, and that will not be long. Thank you for your attention to this matter! President DONALD J. TRUMP",
-   "category": "contradiction",
+   "category": "claim",
    "sentiment": 0.0,
    "analysis": "Prices are Biden's fault, not his; oil \"will drop like a rock as soon as the Military Conflict with Iran is over.\"",
-   "contradicts": [
-    144
-   ],
-   "contradictionReason": "Earlier the same day, fuel prices were rising \"mostly\" because of Russia/Ukraine, \"not Iran.\" Half an hour later, oil drops once the Iran conflict ends."
+   "contradicts": [],
+   "contradictionReason": ""
   },
   {
    "id": 148,
@@ -2081,7 +2030,7 @@
    "contradicts": [
     49
    ],
-   "contradictionReason": "Jun 23: money and sanctions relief released by the Treasury into escrow, for Iran's food. Sep 28: \"I offered them NOTHING!\""
+   "contradictionReason": "Jun 23: \"The Money and/or Sanctions that the U.S. Treasury is releasing goes into escrow.\" Sep 28: \"I offered them NOTHING!\""
   },
   {
    "id": 153,
@@ -2113,14 +2062,11 @@
    "time": "2026-10-01T17:54:47Z",
    "url": "https://www.trumpstruth.org/statuses/42067",
    "text": "I stated, numerous times, that it would take 4-6 weeks to get rid of THE IRAN NUCLEAR THREAT, and I did it in one night! The rest of the time is just to make sure it stays that way. President DONALD J. TRUMP",
-   "category": "contradiction",
+   "category": "claim",
    "sentiment": 0.0,
    "analysis": "The nuclear threat, estimated at 4-6 weeks, was removed \"in one night!\" — \"The rest of the time is just to make sure it stays that way.\"",
-   "contradicts": [
-    101,
-    102
-   ],
-   "contradictionReason": "Aug 16 invited South Korea to \"join us in the Denuclearization\" of Iran, and Aug 17 called it \"the number one Goal.\" Oct 1: it was done in one night months ago."
+   "contradicts": [],
+   "contradictionReason": ""
   },
   {
    "id": 156,
@@ -2155,10 +2101,8 @@
    "category": "deescalation",
    "sentiment": 0.3,
    "analysis": "\"Productive discussions\"; blockade stays; and no attacks on Iran \"prior to the Midterm Elections.\"",
-   "contradicts": [
-    132
-   ],
-   "contradictionReason": "Sep 1: the \"biggest attack of them all\" is \"waiting in the wings.\" Oct 8: none until after the US midterms."
+   "contradicts": [],
+   "contradictionReason": ""
   },
   {
    "id": 159,
@@ -2166,13 +2110,13 @@
    "time": "2026-10-08T18:59:10Z",
    "url": "https://www.trumpstruth.org/statuses/42204",
    "text": "The Fake and Artificial News is out there trying to say that I’m inviting the enemy to bomb San Diego and Los Angeles when, in actuality, what I was talking about was that a temporary increase in the price of Gasoline is a small price to pay for Iran not having a Nuclear Weapon and, if you want to see a big price, can you imagine what it would be like if they bombed San Diego and/or Los Angeles? All I was doing was making a comparison between paying a little more, for a short time, for Gasoline, versus the bombing of our Major Cities. Everybody knew that, the Fake News knew it as well, but they continue to go out and say that I am asking the enemy to bomb two Cities that I love. It’s totally clear what I say but, these people are Degenerates, and think they can continuously get away with Fake News! President DONALD J. TRUMP",
-   "category": "contradiction",
+   "category": "claim",
    "sentiment": -0.2,
    "analysis": "He wasn't inviting bombs on San Diego; a gas price rise is \"a small price to pay\" for no Iranian nuke.",
    "contradicts": [
     157
    ],
-   "contradictionReason": "Oct 5: gas prices are \"no longer\" about the Strait of Hormuz. Oct 8: higher gas is the price of stopping Iran."
+   "contradictionReason": "Oct 5: \"What's driving up Gasoline is no longer the Strait of Hormuz.\" Oct 8: \"a temporary increase in the price of Gasoline is a small price to pay for Iran not having a Nuclear Weapon.\""
   },
   {
    "id": 160,
@@ -2208,10 +2152,9 @@
    "sentiment": -0.2,
    "analysis": "A Nobel complaint: he is \"about to settle, or win\" two more wars, \"Iran and, Russia/Ukraine.\"",
    "contradicts": [
-    9,
-    142
+    9
    ],
-   "contradictionReason": "Mar 20: the Iran fight is \"Militarily WON.\" Sep 7: \"when we WIN.\" Oct 10: about to \"settle, or win.\""
+   "contradictionReason": "Mar 20: \"Now that fight is Militarily WON.\" Oct 10: \"I’m about to settle, or win, two more, Iran and, Russia/Ukraine.\""
   },
   {
    "id": 163,
@@ -2258,10 +2201,8 @@
    "category": "threat",
    "sentiment": -0.5,
    "analysis": "The Houthis are back, \"probably at the behest of Iran, which is a Failing Nation.\" He \"will never forget!\"",
-   "contradicts": [
-    129
-   ],
-   "contradictionReason": "Aug 31: Iran is \"officially a Failed Nation. IT IS DEAD!\" Oct 13: still failing, and directing proxies."
+   "contradicts": [],
+   "contradictionReason": ""
   }
  ]
 }

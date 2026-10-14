@@ -49,10 +49,16 @@ Work on an up-to-date `main` (`git checkout main && git pull`). Use `python3`; n
    - `sentiment`: -1 hostile … +1 conciliatory toward Iran.
    - `analysis`: may be `""` for link shares and passing mentions. Anything in quotation marks
      must be an exact substring of a post's text.
-   - `contradicts`: only when two statements cannot both be true, or one reverses the other.
-     Point to earlier posts: existing ids, or urls of earlier candidates in this batch. When
-     set, `contradictionReason` names both dates and quotes both posts exactly; otherwise leave
-     both empty.
+   - `contradicts` (the contradiction standard): link only a Trump statement to an earlier Trump
+     statement when the two cannot both be true, or when the later one reverses a stated
+     position, intent or commitment of the earlier one. Never link for repetition, for
+     escalation of the same claim, for external events (e.g. Iran's attacks), or for tone
+     shifts. When in doubt, don't link. Point to earlier posts: existing ids, or urls of earlier
+     candidates in this batch.
+   - `contradictionReason` (only when `contradicts` is set, else `""`): quote at least one exact
+     phrase from this post and one from a linked post, name only those posts' dates, and quote
+     only linked posts. Add no outside facts or elapsed-time claims (no "months ago").
+     The validator enforces the quoting and date rules.
 5. **Merge.** `python3 tools/daily.py merge /tmp/candidates.json /tmp/classified.json`
 6. **Phases, clusters, summary** (edit `data/posts.json` by hand, framing only):
    - Every post must fall in a phase; the last phase is open-ended (`"end": null`). If the story

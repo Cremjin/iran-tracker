@@ -41,9 +41,9 @@ function renderHero(analysis){
   document.getElementById('heroCounter').innerHTML = `
     <div class="hero-grid">
       <div>
-        <div class="hero-overline">Times Trump Contradicted Himself on Iran</div>
+        <div class="hero-overline">Times Trump Contradicted or Reversed Himself on Iran</div>
         <div class="hero-num" id="heroNum">0</div>
-        <div class="hero-caption">documented <strong>self-contradictions</strong> across ${posts.length} verbatim posts</div>
+        <div class="hero-caption">documented <strong>contradictions and reversals</strong> across ${posts.length} verbatim posts</div>
         <div class="hero-sub">${withContra} of ${posts.length} posts reverse or undercut an earlier statement</div>
       </div>
       <div>
@@ -70,7 +70,7 @@ function renderStats(posts, clusterCount) {
   const stats = { contradictions: posts.filter(p=> p.contradicts.length).length, escalations: n('escalation'),
     deescalations: n('deescalation'), threats: n('threat'), claims: n('claim') };
   document.getElementById('statsRow').innerHTML = `
-    <div class="stat red"><div class="stat-val">${stats.contradictions||0}</div><div class="stat-label">Contradicting Posts</div></div>
+    <div class="stat red"><div class="stat-val">${stats.contradictions||0}</div><div class="stat-label">Contradicting / Reversing Posts</div></div>
     <div class="stat orange"><div class="stat-val">${stats.escalations||0}</div><div class="stat-label">Escalations</div></div>
     <div class="stat green"><div class="stat-val">${stats.deescalations||0}</div><div class="stat-label">De-escalations</div></div>
     <div class="stat yellow"><div class="stat-val">${stats.threats||0}</div><div class="stat-label">Threats / Ultimatums</div></div>
