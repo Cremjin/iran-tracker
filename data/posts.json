@@ -116,7 +116,7 @@
   },
   {
    "label": "The Apr 7 Whiplash",
-   "description": "\"A whole civilization will die tonight, never to be brought back again\" — then, about 90 minutes before his own deadline, a two-week suspension of all bombing.",
+   "description": "\"A whole civilization will die tonight, never to be brought back again\" — then, hours later, a two-week suspension of all bombing.",
    "posts": [
     16,
     17
@@ -144,41 +144,6 @@
     75,
     98,
     135
-   ]
-  },
-  {
-   "label": "The Money That Isn't",
-   "description": "A 300 million payment is Fake News (Jun 15), then a 300 billion one (Jun 18); Iran gets \"not ten cents\" (Jun 19); money and sanctions relief go into escrow (Jun 23); \"I offered them NOTHING!\" (Sep 28).",
-   "posts": [
-    28,
-    34,
-    37,
-    49,
-    53,
-    152
-   ]
-  },
-  {
-   "label": "Talks / No Talks",
-   "description": "Iran requests a meeting (Jun 29); a deal's \"perimeters\" are agreed (Aug 2); Iran is \"duplicitous\" for denying talks (Aug 3); \"no talks or conversations going on\" (Aug 18); \"I couldn't care less if they sign\" (Sep 2); open to the concept (Sep 14); \"productive discussions\" (Oct 8).",
-   "posts": [
-    63,
-    88,
-    90,
-    103,
-    133,
-    145,
-    158
-   ]
-  },
-  {
-   "label": "Who Raised the Price of Gas?",
-   "description": "Sep 14: fuel prices are about Russia/Ukraine, \"not Iran\" — then, the same afternoon, oil will drop once the Iran conflict ends. Oct 5: gas is \"no longer\" about Hormuz. Oct 8: higher gas is \"a small price to pay\" for stopping Iran.",
-   "posts": [
-    144,
-    147,
-    157,
-    159
    ]
   }
  ],
@@ -328,10 +293,8 @@
    "category": "threat",
    "sentiment": -0.9,
    "analysis": "The most extreme threat yet — power plants, \"STARTING WITH THE BIGGEST ONE FIRST\" — an hour after declaring every goal met.",
-   "contradicts": [
-    10
-   ],
-   "contradictionReason": "Mar 20: \"we consider winding down our great Military efforts.\" Mar 21: the US \"will hit and obliterate their various POWER PLANTS.\""
+   "contradicts": [],
+   "contradictionReason": ""
   },
   {
    "id": 13,
@@ -887,10 +850,8 @@
    "category": "escalation",
    "sentiment": -0.8,
    "analysis": "US strikes for violating the ceasefire \"AGAIN!\" Next time: \"complete the job,\" and the Islamic Republic \"will no longer exist!\"",
-   "contradicts": [
-    38
-   ],
-   "contradictionReason": "Jun 20: Iran’s \"Country being completely defeated militarily.\" Jun 27: the US may be \"forced to militarily complete the job that we very successfully started.\""
+   "contradicts": [],
+   "contradictionReason": ""
   },
   {
    "id": 59,
@@ -1375,10 +1336,8 @@
    "category": "claim",
    "sentiment": -0.6,
    "analysis": "\"The U.S.A. has total control over the Strait of Hormuz. I THINK WE WILL KEEP IT!\"",
-   "contradicts": [
-    10
-   ],
-   "contradictionReason": "Mar 20: the Strait is for \"other Nations who use it\" to police — \"The United States does not!\" Aug 12: \"I THINK WE WILL KEEP IT!\""
+   "contradicts": [],
+   "contradictionReason": ""
   },
   {
    "id": 99,
@@ -2027,10 +1986,8 @@
    "category": "claim",
    "sentiment": -0.3,
    "analysis": "Reports that he offered sanctions relief and frozen funds are a \"HOAX.\" \"I offered them NOTHING!\"",
-   "contradicts": [
-    49
-   ],
-   "contradictionReason": "Jun 23: \"The Money and/or Sanctions that the U.S. Treasury is releasing goes into escrow.\" Sep 28: \"I offered them NOTHING!\""
+   "contradicts": [],
+   "contradictionReason": ""
   },
   {
    "id": 153,
@@ -2113,10 +2070,8 @@
    "category": "claim",
    "sentiment": -0.2,
    "analysis": "He wasn't inviting bombs on San Diego; a gas price rise is \"a small price to pay\" for no Iranian nuke.",
-   "contradicts": [
-    157
-   ],
-   "contradictionReason": "Oct 5: \"What's driving up Gasoline is no longer the Strait of Hormuz.\" Oct 8: \"a temporary increase in the price of Gasoline is a small price to pay for Iran not having a Nuclear Weapon.\""
+   "contradicts": [],
+   "contradictionReason": ""
   },
   {
    "id": 160,
@@ -2151,10 +2106,8 @@
    "category": "claim",
    "sentiment": -0.2,
    "analysis": "A Nobel complaint: he is \"about to settle, or win\" two more wars, \"Iran and, Russia/Ukraine.\"",
-   "contradicts": [
-    9
-   ],
-   "contradictionReason": "Mar 20: \"Now that fight is Militarily WON.\" Oct 10: \"I’m about to settle, or win, two more, Iran and, Russia/Ukraine.\""
+   "contradicts": [],
+   "contradictionReason": ""
   },
   {
    "id": 163,
