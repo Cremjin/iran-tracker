@@ -1,0 +1,16 @@
+{
+  "project": "Iran Tracker",
+  "ticketPrefix": "IRN",
+  "mode": "sprint",
+  "phase": "spec",
+  "pages": {
+    "project": "https://app.notion.com/p/3f7d80d8e61f81648648e7f6b78e2429",
+    "spec": "https://app.notion.com/p/3f7d80d8e61f8143ac7ac03d512fd146",
+    "decisionLog": "https://app.notion.com/p/3f7d80d8e61f8120805afed14a5345af",
+    "testReports": "https://app.notion.com/p/3f7d80d8e61f8102aaa6e9319b3904a2"
+  },
+  "tickets": {
+    "database": "https://app.notion.com/p/2eecd233015f456f8143feea61acb517",
+    "dataSource": "collection://2f9abb9b-14c8-4058-8346-14452f76575a"
+  }
+}
