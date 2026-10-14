@@ -20,6 +20,8 @@ address lives only in that trigger prompt; never write it into the repo.
 
 ## Steps
 Work on an up-to-date `main` (`git checkout main && git pull`). Use `python3`; no installs.
+Write to GitHub only through the GitHub connector (MCP) tools, never `git push`: a scheduled
+session may not be allowed to push to `main` or new branches; the API path works either way.
 
 1. **Simulation hook (QA only).** If this run's message contains `SIMULATE_FETCH_FAILURE`, skip
    to *Failure path* with reason `simulated`. If it also has `date=YYYY-MM-DD`, pass
@@ -30,8 +32,8 @@ Work on an up-to-date `main` (`git checkout main && git pull`). Use `python3`; n
    Exit code 2 means the fetch failed: go to *Failure path* with the printed error.
 3. **No new posts.** If it printed `0 new Iran posts`, run
    `python3 tools/daily.py merge /tmp/candidates.json`, then `python3 tools/validate.py`, then
-   commit only `data/status.json` straight to `main` ("Daily check YYYY-MM-DD: no new Iran posts")
-   and push. No PR. Stop.
+   if `data/status.json` changed, write it to `main` with the GitHub connector's
+   `create_or_update_file` ("Daily check YYYY-MM-DD: no new Iran posts"). No PR. Stop.
 4. **Classify** every candidate in `/tmp/candidates.json`. Read `data/posts.json` first (phases,
    clusters, and at least the last 60 posts) so links and tone stay consistent. Write
    `/tmp/classified.json`, an object keyed by each candidate's `url`:
@@ -69,18 +71,18 @@ Work on an up-to-date `main` (`git checkout main && git pull`). Use `python3`; n
 7. **Validate.** `python3 tools/validate.py --online`
    If it fails, fix your classification or framing and re-run. Never edit quote text, urls or
    dates to make it pass. If it still fails, continue to step 8 but do **not** merge.
-8. **Pull request.** Branch `routine/daily-YYYY-MM-DD`; `git add data/`; check that
-   `git diff --cached --name-only` lists only `data/` paths; commit
-   ("Daily update YYYY-MM-DD: N new Iran posts"); push; open a PR to `main` with the `gh` CLI (or
-   the GitHub connector). Body: one line per new post (date, category, source link, any
+8. **Pull request.** Check that `git status --porcelain` lists only `data/` paths. With the
+   GitHub connector: `create_branch` `routine/daily-YYYY-MM-DD` from `main`, `push_files` the
+   changed `data/` files to it ("Daily update YYYY-MM-DD: N new Iran posts"), then
+   `create_pull_request` to `main`. Body: one line per new post (date, category, source link, any
    contradiction), then "Revert: use the Revert button on this PR."
    - Validator passed and the PR's changed files are all under `data/`: merge it (squash).
    - Otherwise: leave it open, add a PR comment with the validator output, and stop.
 
 ## Failure path
 1. `python3 tools/daily.py fail "<reason>"` records today's failure in `data/status.json`.
-2. Commit only `data/status.json` straight to `main` ("Daily check YYYY-MM-DD: fetch failed")
-   and push.
+2. Write only `data/status.json` to `main` with the GitHub connector's `create_or_update_file`
+   ("Daily check YYYY-MM-DD: fetch failed").
 3. Only if step 1 printed `ALERT`: send **one** email with the Gmail connector to the owner
    address from the trigger prompt, and nobody else.
    - Subject: `[DevTeam: Iran Tracker] Action needed: feed down 2 days`
@@ -88,5 +90,5 @@ Work on an up-to-date `main` (`git checkout main && git pull`). Use `python3`; n
      now shows a stale banner; the routine keeps retrying daily and backfills automatically when
      the feed returns; nothing is needed unless it stays down, in which case reply and the team
      will look at it.
-   - If sending fails, set `"alerted": false` in `data/status.json` and commit that too, so
+   - If sending fails, set `"alerted": false` in `data/status.json` and write that too, so
      tomorrow's run retries the email.

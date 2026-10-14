@@ -2,7 +2,7 @@
   "project": "Iran Tracker",
   "ticketPrefix": "IRN",
   "mode": "sprint",
-  "phase": "build",
+  "phase": "deliver",
   "pages": {
     "project": "https://app.notion.com/p/3f7d80d8e61f81648648e7f6b78e2429",
     "spec": "https://app.notion.com/p/3f7d80d8e61f8143ac7ac03d512fd146",
