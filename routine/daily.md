@@ -20,8 +20,8 @@ address lives only in that trigger prompt; never write it into the repo.
 
 ## Steps
 Work on an up-to-date `main` (`git checkout main && git pull`). Use `python3`; no installs.
-Write to GitHub only through the GitHub connector (MCP) tools, never `git push`: a scheduled
-session may not be allowed to push to `main` or new branches; the API path works either way.
+Never `git push` to `main`. Write `main` only through the GitHub connector (MCP) tools; push only
+`routine/daily-*` branches with git (`posts.json` is too large to send through `push_files`).
 
 1. **Simulation hook (QA only).** If this run's message contains `SIMULATE_FETCH_FAILURE`, skip
    to *Failure path* with reason `simulated`. If it also has `date=YYYY-MM-DD`, pass
@@ -71,10 +71,10 @@ session may not be allowed to push to `main` or new branches; the API path works
 7. **Validate.** `python3 tools/validate.py --online`
    If it fails, fix your classification or framing and re-run. Never edit quote text, urls or
    dates to make it pass. If it still fails, continue to step 8 but do **not** merge.
-8. **Pull request.** Check that `git status --porcelain` lists only `data/` paths. With the
-   GitHub connector: `create_branch` `routine/daily-YYYY-MM-DD` from `main`, `push_files` the
-   changed `data/` files to it ("Daily update YYYY-MM-DD: N new Iran posts"), then
-   `create_pull_request` to `main`. Body: one line per new post (date, category, source link, any
+8. **Pull request.** Check that `git status --porcelain` lists only `data/` paths.
+   `git checkout -b routine/daily-YYYY-MM-DD`, `git add data/`, commit ("Daily update
+   YYYY-MM-DD: N new Iran posts"), `git push origin routine/daily-YYYY-MM-DD`, then the GitHub
+   connector's `create_pull_request` to `main`. Body: one line per new post (date, category, source link, any
    contradiction), then "Revert: use the Revert button on this PR."
    - Validator passed and the PR's changed files are all under `data/`: merge it (squash).
    - Otherwise: leave it open, add a PR comment with the validator output, and stop.
