@@ -83,7 +83,8 @@
     104,
     129,
     142,
-    162
+    162,
+    167
    ]
   },
   {
@@ -2154,6 +2155,30 @@
    "category": "threat",
    "sentiment": -0.5,
    "analysis": "The Houthis are back, \"probably at the behest of Iran, which is a Failing Nation.\" He \"will never forget!\"",
+   "contradicts": [],
+   "contradictionReason": ""
+  },
+  {
+   "id": 167,
+   "date": "2026-10-18",
+   "time": "2026-10-18T14:45:34Z",
+   "url": "https://www.trumpstruth.org/statuses/42411",
+   "text": "To the Great People of Israel:\n\nBibi Netanyahu has been a Great Warrior Prime Minister, and an even greater Partner for Peace in combatting the Islamic Republic of Iran, with its 51 year old chant, “Death to Israel, Death to America! We will destroy the Little Satan and the Big Satan.” What Country can survive when things such as this are allowed to be said, because eventually, they always end up being true? It would have been only a question of time until Iran would have put that ominous phrase into effect, but they have been systematically destroyed, both Militarily and Financially, and unless they change their ways, rapidly, we will soon finish the job. If Israel has the wrong Leader, which would be anyone other than Bibi, America will have to do this work ourselves, and I am not inclined to do so. Bibi Netanyahu has been Strong, Brave, and Brilliant in the face of tremendous opposition, including that coming from even Israel, itself. Despite all of that, he has endured and, in fact, he has thrived! I have watched Bibi under the most trying of times. Normal men or women in such situations would have wilted under the pressure — But Bibi did not wilt, he actually got stronger, and maintains that same Strength today. This is the kind of Partner that the United States of America is demanding of Israel, a Country for which it has done so much. Please let this Letter serve to represent my Complete and Total Endorsement of Bibi Netanyahu in his upcoming Race for Re-Election as Prime Minister of Israel. BIBI NETANYAHU WILL NEVER LET YOU DOWN! Thank you for your attention to this matter.\n\nDONALD J. TRUMPPRESIDENT OF THE UNITED STATES OF AMERICA",
+   "category": "threat",
+   "sentiment": -0.7,
+   "analysis": "An endorsement of Bibi doubles as a war update: Iran has been \"systematically destroyed, both Militarily and Financially\" — and yet \"we will soon finish the job.\"",
+   "contradicts": [],
+   "contradictionReason": ""
+  },
+  {
+   "id": 168,
+   "date": "2026-10-18",
+   "time": "2026-10-18T20:36:22Z",
+   "url": "https://www.trumpstruth.org/statuses/42416",
+   "text": "My decision on Russia is a very simple one. I am in the process of negotiating Peace in the war between Russia and Ukraine, and don’t want to do anything that will drive, foolishly, Russia away from the bargaining table. Great progress is being made, and that includes current hostage negotiations! Signing that document at this time will do that, and I can sign it later, or any time that I want! Perhaps more importantly, Russia is doing very little, if anything, to help the Islamic Republic of Iran, compared to what they could be doing, and I want to keep it that way, and will, unless stupid people get in the way. Lastly, Zelenskyy is using Diesel Refineries in Russia as a target, knowing that these attacks are seriously hurting the world diesel markets, including those in the United States. Farmers, ranchers, and businesses of all kinds are suffering greatly from this, but Russia is, nevertheless, sending, at a low price, millions of barrels of diesel to the World. Zelenskyy doesn’t care, and frankly, with all of the money that Europe is famously giving him, and that Crooked Joe Biden gave him in the past, he doesn’t want to end this war, and probably never did. He could have made a better deal two years ago than he can now. His country is in shambles, a large portion of his land is lost, his oceans and seas are gone, and his male population is low, wounded, and/or dead. I WANT THIS WAR END! Thank you for your attention to this matter. President DONALD J. TRUMP",
+   "category": "claim",
+   "sentiment": -0.2,
+   "analysis": "Russia policy explained via Iran: Russia is \"doing very little, if anything, to help the Islamic Republic of Iran,\" and he wants \"to keep it that way.\"",
    "contradicts": [],
    "contradictionReason": ""
   }
