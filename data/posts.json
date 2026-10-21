@@ -84,7 +84,8 @@
     129,
     142,
     162,
-    167
+    167,
+    171
    ]
   },
   {
@@ -112,7 +113,8 @@
    "posts": [
     6,
     9,
-    10
+    10,
+    170
    ]
   },
   {
@@ -2191,6 +2193,30 @@
    "category": "neutral",
    "sentiment": 0,
    "analysis": "",
+   "contradicts": [],
+   "contradictionReason": ""
+  },
+  {
+   "id": 170,
+   "date": "2026-10-20",
+   "time": "2026-10-20T00:21:30Z",
+   "url": "https://www.trumpstruth.org/statuses/42451",
+   "text": "If you want to see what is at stake in this Election, just look at what is happening in France — A once-great nation that is being conquered, looted, and burned to the ground by migrants, jihadists, and Communists who hate Christianity, and Western Civilization, itself. As we are seeing in Europe, Globalist Leftwing Politicians have treasonously imported millions of Third World Migrants who are totally incompatible with Western Values, and despise everything that makes France great. They have surrendered their country to vandals who could have never built it themselves, and who refuse to assimilate into their society, but only want to enter the welfare state paid for by hardworking citizens of France, while desecrating the culture that makes it all possible. Europe has to CLOSE THEIR BORDERS, and get out the people who hate their countries, and get them out FAST, before it is too late! These people do not love France, or these other countries under attack. They don’t love the people, they don’t love the art, they don’t love the architecture or the buildings, they don’t love anything that surrounds them. They have no passion for where they are, and they never will and, as I told President Macron when I first met him many years ago, CLOSE YOUR BORDER or, it will be the end of France. We stand with Europe, despite its flaws, its weaknesses and, hopefully, its temporary loss of direction. But if they don’t soon find their way, we will have no choice but to leave. When we asked for help in Iran (Help which we didn’t need, but was done more in the form of a test), they weren’t there to help, something which I can never forget.\n\nWhen you see burning steeples and raging fires in France, just remember, THAT is what the Radical Dumocrats want to do to AMERICA. Just like in Europe, Dumocrats are the party of anti-Western Marxists and hostile Third World Migrants. Senator Roger Marshall and the People of Kansas will not let them plunder our Nation’s Wealth, or demolish what our Ancestors built with their own sweat, blood, tears, and skill.\n\nThe maniacs attacking our Civilization think they are doing well, you see and read about them all day and all night, but they have NO IDEA of the GIANT they have awoken and unleashed. They are going to find out the hard way on Election Day, November 3rd, 2026!  Americans are going to stand up and declare that we will defend our Culture, we will protect our Civilization, we will preserve our Religion, our Values, and our Heritage, and we will never let our Nation be conquered or destroyed! President DONALD J. TRUMP",
+   "category": "claim",
+   "sentiment": -0.4,
+   "analysis": "A France rant turns to Iran: \"When we asked for help in Iran (Help which we didn’t need, but was done more in the form of a test), they weren’t there to help, something which I can never forget.\"",
+   "contradicts": [],
+   "contradictionReason": ""
+  },
+  {
+   "id": 171,
+   "date": "2026-10-20",
+   "time": "2026-10-20T01:17:51Z",
+   "url": "https://www.trumpstruth.org/statuses/42462",
+   "text": "Two weeks ago, I signed an Executive Order waiving the Off-Road requirement for Red-Dye Diesel, allowing Farmers, Truckers, and anyone else to fill up with Diesel totally TAX FREE. Here in Kansas, your Dumocrat Governor, Laura Kelly, is REFUSING to give you this much-needed relief. If you want low-cost Diesel Fuel, you must VOTE FOR TY MASTERSON FOR GOVERNOR! Tonight, I am also pleased to announce that the Department of Agriculture will be launching a new “Harvest Fuel Relief Program,” providing our Farmers with 8 BILLION DOLLARS in support to offset Diesel costs during this Harvest Season, and Roger Marshall is the Leader who fought for this to happen. When Republicans win, we will pass even more funding for our Great Farmers, and Fuel prices will come tumbling down as soon as the Iran War is over, which will happen very quickly! President DONALD J. TRUMP",
+   "category": "claim",
+   "sentiment": -0.3,
+   "analysis": "Diesel relief for Kansas, with fuel prices \"tumbling down as soon as the Iran War is over, which will happen very quickly!\"",
    "contradicts": [],
    "contradictionReason": ""
   }
