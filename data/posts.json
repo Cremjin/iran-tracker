@@ -2291,6 +2291,30 @@
    "analysis": "Eve of the midterms: oil is \"DROPPING LIKE A ROCK\" because \"people feel that there will not be a War with Iran,\" and \"Iran wants a settlement, as soon as possible.\"",
    "contradicts": [],
    "contradictionReason": ""
+  },
+  {
+   "id": 178,
+   "date": "2026-11-06",
+   "time": "2026-11-06T11:48:32Z",
+   "url": "https://www.trumpstruth.org/statuses/43494",
+   "text": "NEWSMAX: “Trump is a Winner, and he’s right on Iran!”",
+   "category": "neutral",
+   "sentiment": 0,
+   "analysis": "",
+   "contradicts": [],
+   "contradictionReason": ""
+  },
+  {
+   "id": 179,
+   "date": "2026-11-06",
+   "time": "2026-11-06T18:09:41Z",
+   "url": "https://www.trumpstruth.org/statuses/43497",
+   "text": "Israel and, in fact, the entire Middle East, WOULD NOT EXIST TODAY if I did not stop Iran from having a Nuclear Weapon. Nobody wants to say that, but everybody knows it’s true! President DONALD J. TRUMP",
+   "category": "claim",
+   "sentiment": -0.4,
+   "analysis": "Post-midterms, the stakes go regional: Israel and \"the entire Middle East, WOULD NOT EXIST TODAY if I did not stop Iran from having a Nuclear Weapon.\"",
+   "contradicts": [],
+   "contradictionReason": ""
   }
  ]
 }
