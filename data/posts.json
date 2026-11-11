@@ -85,7 +85,9 @@
     142,
     162,
     167,
-    171
+    171,
+    182,
+    183
    ]
   },
   {
@@ -2337,6 +2339,30 @@
    "category": "deescalation",
    "sentiment": 0.1,
    "analysis": "After a Qatar call: the Gulf would \"prefer the status quo,\" now blockade plus \"the new Operation Iron Gate — Therefore, Land and Sea\"; America is \"locked and loaded,\" but that \"seems to be quite unlikely.\"",
+   "contradicts": [],
+   "contradictionReason": ""
+  },
+  {
+   "id": 182,
+   "date": "2026-11-10",
+   "time": "2026-11-10T01:36:56Z",
+   "url": "https://www.trumpstruth.org/statuses/43539",
+   "text": "Defeated Republican Congressman Thomas Massie, a total loser, is trying to Impeach perhaps the most popular and successful military official in the Country, Secretary of War, Pete Hegseth. With recruitment at an ALL-TIME HIGH, from an all-time low under Sleepy Joe Biden, and TWO VICTORIES, Venezuela and Iran, Pete Hegseth should be praised, not Impeached. Congress, stand up for Pete!!! President DJT",
+   "category": "claim",
+   "sentiment": -0.3,
+   "analysis": "Defending Hegseth against impeachment, the Iran war becomes a closed ledger entry: \"TWO VICTORIES, Venezuela and Iran.\"",
+   "contradicts": [],
+   "contradictionReason": ""
+  },
+  {
+   "id": 183,
+   "date": "2026-11-10",
+   "time": "2026-11-10T23:24:08Z",
+   "url": "https://www.trumpstruth.org/statuses/43547",
+   "text": "The Democrats’ attempt to impeach Secretary of War Pete Hegseth has miserably FAILED! Every single Republican, except Thomas Massie, a major LOSER, voted in favor of Pete. Again, Victories in Venezuela and Iran, the Best Recruitment Numbers in the History of the Military (Long waiting lists to get in!), and Spirit like rarely seen before, led to the EXONERATION of a Great American Patriot. The Democrats continue to weaponize and abuse the United States of America. They must be stopped! MAKE AMERICA GREAT AGAIN. President DONALD J. TRUMP",
+   "category": "claim",
+   "sentiment": -0.3,
+   "analysis": "Hegseth survives the vote, and again: \"Victories in Venezuela and Iran.\"",
    "contradicts": [],
    "contradictionReason": ""
   }
