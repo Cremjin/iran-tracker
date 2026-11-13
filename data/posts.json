@@ -102,11 +102,13 @@
   },
   {
    "label": "Deal Reversal Arc",
-   "description": "Jan 28: \"MAKE A DEAL!\" Mar 21: \"they want to make a deal. I don't!\" Mar 23: two days of \"very good and productive conversations\" and strikes postponed.",
+   "description": "Jan 28: \"MAKE A DEAL!\" Mar 21: \"they want to make a deal. I don't!\" Mar 23: two days of \"very good and productive conversations\" and strikes postponed. Sep 14: a deal is \"The concept of which we are open to.\" Nov 12: \"We don’t need a deal with Iran. Those days have long since passed.\"",
    "posts": [
     3,
     11,
-    14
+    14,
+    145,
+    184
    ]
   },
   {
@@ -2365,6 +2367,20 @@
    "analysis": "Hegseth survives the vote, and again: \"Victories in Venezuela and Iran.\"",
    "contradicts": [],
    "contradictionReason": ""
+  },
+  {
+   "id": 184,
+   "date": "2026-11-12",
+   "time": "2026-11-12T13:07:34Z",
+   "url": "https://www.trumpstruth.org/statuses/43558",
+   "text": "I have asked Vice President Vance to focus his complete and total attention on the Massive Corruption and Crime taking place in Democrat run Cities and States throughout the U.S. The Blue States, such as Minnesota, California, Illinois, and many more, are all poorly run, corrupt disasters. Billions of Dollars is being stolen each and every month. Our Budget could be quickly BALANCED with the correction of this large scale criminal activity. CORRUPTION is in the Democrat Leadership’s blood! We don’t need a deal with Iran. Those days have long since passed. We’ve got their money, Hundreds of Billions of Dollars, and we’ve got their Strait! Thank you for your attention to this matter. President DJT",
+   "category": "escalation",
+   "sentiment": -0.6,
+   "analysis": "A post about Blue State corruption ends on Iran: \"We don’t need a deal with Iran. Those days have long since passed.\" Instead: \"We’ve got their money, Hundreds of Billions of Dollars, and we’ve got their Strait!\"",
+   "contradicts": [
+    145
+   ],
+   "contradictionReason": "Sep 14: Iran \"wants to make a deal, quickly and badly\" and engaging is \"The concept of which we are open to.\" Nov 12: \"We don’t need a deal with Iran. Those days have long since passed.\""
   }
  ]
 }
