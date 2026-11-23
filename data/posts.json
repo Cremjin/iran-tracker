@@ -2405,6 +2405,20 @@
    "analysis": "Fact-checking 60 Minutes with his own math: \"Only 1 out of the 2,0000 got through,\" therefore \"99.99% of Iranian missiles and drones have been shot down or, in any event, not caused U.S. deaths.\"",
    "contradicts": [],
    "contradictionReason": ""
+  },
+  {
+   "id": 187,
+   "date": "2026-11-22",
+   "time": "2026-11-22T21:47:46Z",
+   "url": "https://www.trumpstruth.org/statuses/43706",
+   "text": "As everyone remembers, I predicted two things concerning the November 3rd Midterm Elections. One, that if the Democrats win, the Stock Markets would go down, substantially, which they have, and two, that the Islamic Republic of Iran, which has killed 81,000 protestors as of today, will grow more aggressive in their attacks, which has also occurred. Iran has launched more drones and missiles in the last week than at any time for over a year. Don’t worry, they’ve all been knocked down, and done no damage. Iranian leaders consider the Democrats weak, ineffective, and Country destroying, but I won’t let that happen! Both the Dems and Iran fought like hell to keep the Oil price up as long as possible and, since the Election, the Oil price has dropped by a record level. Too bad the Voters didn’t understand this before they pulled the trigger, but the whole Election was very “strange.” In the end, America will win! Thank you for your attention to this matter. President DONALD J. TRUMP",
+   "category": "claim",
+   "sentiment": -0.6,
+   "analysis": "A midterm post-mortem: Iran \"will grow more aggressive in their attacks, which has also occurred,\" but \"Don’t worry, they’ve all been knocked down, and done no damage.\" Also, the Dems and Iran \"fought like hell to keep the Oil price up as long as possible.\"",
+   "contradicts": [
+    177
+   ],
+   "contradictionReason": "Nov 2: \"Oil Prices are DROPPING LIKE A ROCK, down almost $10 a Barrel, A RECORD.\" Nov 22: Iran and the Dems \"fought like hell to keep the Oil price up as long as possible and, since the Election, the Oil price has dropped by a record level.\""
   }
  ]
 }
