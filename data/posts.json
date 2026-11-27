@@ -87,7 +87,8 @@
     167,
     171,
     182,
-    183
+    183,
+    188
    ]
   },
   {
@@ -2419,6 +2420,30 @@
     177
    ],
    "contradictionReason": "Nov 2: \"Oil Prices are DROPPING LIKE A ROCK, down almost $10 a Barrel, A RECORD.\" Nov 22: Iran and the Dems \"fought like hell to keep the Oil price up as long as possible and, since the Election, the Oil price has dropped by a record level.\""
+  },
+  {
+   "id": 188,
+   "date": "2026-11-26",
+   "time": "2026-11-26T05:47:03Z",
+   "url": "https://www.trumpstruth.org/statuses/43740",
+   "text": "David E. Sanger, the mediocre reporter for the Failing New York Times, didn’t mention in his recent story on me the successful closing of the Border, best crime stats in years (lowest murder rate since 1900 - 126 years!), biggest Tax and Regulation Cuts, EVER, the most successful naval blockade in history, the destruction of Iran’s Navy and Air Force (and more!), the ONE DAY WIN against Venezuela, and today’s big success in straightening out the Obama caused mess in Iowa. David Sanger is a lowlife that only writes what he is told to write by his bosses. Also, until the Election, best Market, EVER, 82 days, settled 8 Wars, and the USA is respected again like never before!",
+   "category": "claim",
+   "sentiment": -0.4,
+   "analysis": "A list of things the Times left out, including \"the most successful naval blockade in history\" and \"the destruction of Iran’s Navy and Air Force (and more!)\"",
+   "contradicts": [],
+   "contradictionReason": ""
+  },
+  {
+   "id": 189,
+   "date": "2026-11-26",
+   "time": "2026-11-26T14:19:11Z",
+   "url": "https://www.trumpstruth.org/statuses/43742",
+   "text": "A JOINT STATEMENT MADE BY PRESIDENT DONALD J. TRUMP AND SECRETARY GENERAL OF NATO, MARK RUTTE: President Trump and Secretary General Rutte had an outstanding meeting on Wednesday evening, at what is often referred to as the Southern White House — Mar-a-Lago.\n\nThe meeting was very impactful, with the War between Russia and Ukraine, and the Conflict in Iran, being the primary subjects of discussion. Additionally, all of the record setting achievements that the U.S. and NATO have made together at the Summits in the Hague, and Ankara, were discussed.\n\nWe also talked about, at length, the importance of Russia and Ukraine avoiding any actions that intentionally, or unintentionally, expand the War — and the importance of obtaining a peaceful resolution to the War, as rapidly as possible!\n\nLastly, we discussed Defense Spending, and the Investment in our Industrial Base, both in the United States, and all across NATO. I briefed NATO on the tremendous progress our Defense Companies are making on more than 20 new facilities currently under construction. The focus of these Companies is the building of Patriots, THAAD Systems, Tomahawks, and many new Weapons, both Offensive and Defensive, that have not yet been viewed by the Public, or other Countries. There has never been a time when the United States has produced more Military Equipment or Munitions than now. Our “cupboard” will soon be full and, when it is, our Allies and Partners throughout the World will be benefitting greatly. Thank you for your attention to this matter!",
+   "category": "neutral",
+   "sentiment": 0.0,
+   "analysis": "A Mar-a-Lago readout with NATO's Rutte: \"the Conflict in Iran\" was one of \"the primary subjects of discussion.\"",
+   "contradicts": [],
+   "contradictionReason": ""
   }
  ]
 }
